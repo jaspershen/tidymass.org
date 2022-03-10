@@ -11,7 +11,7 @@ custom_css = ["tm.css"]
 custom_js = ["tm.js"]
 
 # Define base hex url for index page (where the stickers link out to)
-hex_base_url = "tidymodels.github.io/"
+hex_base_url = "tidymass.github.io/"
 hex_ext = "svg"
     
 # Define "news" as both articles and events
@@ -30,7 +30,7 @@ MathJaxVersion = "2.7.1"
 [footer]
     github_url = "https://github.com/tidymass"
     twitter_url = ""
-    support = "Template from tidymodels"
+    support = "Template from [tidymodels](https://www.tidymodels.org/)"
 
 # leave blank in quotes for the default = true
 # to turn off, set = false (no quotes)

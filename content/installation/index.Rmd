@@ -2,7 +2,9 @@
 title: "Install tidymass"
 ---
 
-# **Update R version**
+# Install `tidymass` packages
+
+## Update R version
 
 `tidymass` require R version > 4.1. You can check your R version in your console:
 
@@ -12,7 +14,7 @@ version
 
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
-# **Uninstall `tidyTools` and `metID`**
+## Uninstall `tidyTools` and `metID`
 
 If you have installed `tinyTools` or `metID`, please uninstall them.
 
@@ -36,9 +38,9 @@ remove.packages(pkgs = "metID")
 
 > If there are errors, ignore them.
 
-# **Install `tidymass` from GitLab**
+## Install `tidymass` from GitLab
 
-## Update `remotes`
+### Update `remotes`
 
 You can use the `remotes` package to install `tidymass`. 
 
@@ -48,7 +50,7 @@ Please update `remotes` first and then restart your r session.
 install.packages("remotes")
 ```
 
-## Install `tidymass`
+### Install `tidymass`
 
 Install `tidymass` by:
 
@@ -60,7 +62,7 @@ remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
 
 ![](figures/Screen-Shot 9.png)
 
-## Install tidymass packages one by one
+### Install `tidymass` packages one by one
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
@@ -76,9 +78,9 @@ remotes::install_gitlab("jaspershen/metpath", dependencies = TRUE)
 ```
 
 
-# **Install `tidymass` from GitHub**
+## Install `tidymass` from GitHub
 
-## Install `tidymass`
+### Install `tidymass`
 
 Then install `tidymass`:
 
@@ -122,7 +124,7 @@ GITHUB_PAT=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
 And then restart R session and try again.
 
 
-## Install tidymass packages one by one
+### Install `tidymass` packages one by one
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
@@ -138,11 +140,11 @@ remotes::install_github("tidymass/metpath", dependencies = TRUE)
 ```
 
 
-# **Install `tidymass` from Gitee**
+## Install `tidymass` from Gitee
 
 If you can't install pacakgs from GitHub and GitLab, please try install packags from Gitee.
 
-## Install `tidymass`
+### Install `tidymass`
 
 Then install `tidymass`:
 
@@ -150,7 +152,7 @@ Then install `tidymass`:
 remotes::install_git(url = "https://gitee.com/jaspershen/tidymass", dependencies = TRUE)
 ```
 
-## Install tidymass packages one by one.
+### Install `tidymass` packages one by one.
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
@@ -167,43 +169,135 @@ remotes::install_git(url = "https://gitee.com/jaspershen/metpath", dependencies 
 
 [Let me know if you have any questions](https://github.com/tidymass/tidymass/issues).
 
-# **Frequently Asked Questions**
+# Update `tidymass`
 
-1. Can not install dependent packages `raster` and `Cario`
+You can use the `tidymass` to check the version of all packages and update them. 
 
-`raster` is a package in [CRAN](https://cran.r-project.org/web/packages/raster/index.html), try to install it first and then install `tidymass`.
+## Check version
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-install.packages("raster")
+If you want to check if there are updates for `tidymass` and packages in it. Just check it like this.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+tidymass::check_tidymass_version()
 ```
 
+## Update
 
-`Cario` is a package in [CRAN](https://cran.r-project.org/web/packages/Cairo/index.html), try to install it first and then install `tidymass`.
+The `update_tidymass()` function can be used to update `tidymass` and packages in it.
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-install.packages("Cairo")
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+tidymass::update_tidymass(from = "github")
 ```
 
-2. Error when install `massprocesser`
+> If the `from = "github"` doesn't work, try set it as `from = "gitlab"` or `from = "gitee"`.
 
-The error is:
+# Install docker version of `tidymass`
+
+Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. So it is useful for people who want to share the code, data, and even analysis environment with other people to repeat their analysis and results.
+
+We provide a docker version of `tidymass`, all the packages in `tidymass` and the dependent packages have been installed.
+
+
+## Install docker
+
+Please refer to the [offical website](https://www.docker.com/get-started) to download and install docker. And then run docker.
+
+![](figures/Screen-Shot 4.png)
+
+## Pull the `tidymass` image
+
+Open you terminal and then type code below:
 
 ```
-Error: .onLoad failed in loadNamespace() for 'affy', details:
-  call: assign(".affyInternalEnv", .affyInternalEnv, envir = topenv(parent.frame()))
-  error: cannot add binding of '.affyInternalEnv' to the base environment
-Execution halted
-ERROR: lazy loading failed for package 'massprocesser'
-* removing 'D:/R_packages/R4.0/library/massprocesser'
+docker pull jaspershen/tidymass:latest
 ```
 
-Just try to restart R and install `affy`.
+## Run `tidymass` docker image
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-BiocManager::install("affy")
+In you terminal, run the code below:
+
+```
+docker run -e PASSWORD=tidymass -p 8787:8787 jaspershen/tidymass:latest
 ```
 
-# **Session information**
+The below command will link the RStudio home folder with the desktop of the local machine running the container. Anything saved or edited in the home folder when using the container will be stored on the local desktop.
+
+```
+docker run -e PASSWORD=tidymass -v ~/Desktop:/home/rstudio/ -p 8787:8787 jaspershen/tidymass:latest
+```
+
+## Open the Rstudio server
+
+Then open the browser and visit http://localhost:8787 to power on RStudio server. The user name is `rstudio` and the password is `tidymass`.
+
+![](figures/Screen-Shot 5.png)
+![](figures/Screen-Shot 6.png)
+
+![](figures/Screen-Shot 7.png)
+
+![](figures/Untitled.gif)
+
+# Build your own docker image based on `tidymass`
+
+You can build your own docker image, which contains all your `code`, `data` and `analysis environment`, which is more efficient for reproducible analysis.
+
+## Create `dockerfile`
+
+Create a `dockerfile` without extension. And then open and modify it.
+
+```
+FROM jaspershen/tidymass:latest
+MAINTAINER "Xiaotao Shen" shenxt1990@outlook.com
+
+RUN apt-get update && apt-get install -y curl
+
+COPY demo_data/ /home/rstudio/demo_data/
+
+RUN chmod 777 /home/rstudio/demo_data/
+
+RUN R -e 'install.packages("remotes")'
+
+RUN R -e "remotes::install_gitlab('jaspershen/tidymass')"
+```
+
+If you want to install packages (for example ggraph) which are necessary for you analysis, please add a new line:
+
+```
+RUN R -e 'install.packages("ggraph")'
+```
+
+And you also need to copy your data to the image use the `COPY`.
+
+## Build image
+
+In the `terminal`, use below code to build the image.
+
+```
+docker build -t image-name -f Dockerfile .
+```
+
+Change the `image-name`.
+
+## Use the `docker tag` command to give the `tidymass` image a new name
+
+We need to create a account on the docker hub (https://hub.docker.com/) and then use the next code to link the local image to our account.
+
+```
+docker tag image-name your-account/image-name:latest
+```
+
+## Push image to docker hub
+
+```
+docker push your-account/image-name:latest
+```
+
+Then other people can download your image which contains your code, data and analysis environment, which make it is pretty easy to repeat your analysis and results.
+
+How to pull docker image and run it can [refer this document](https://tidymass.github.io/tidymass/articles/docker.html).
+
+
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 sessionInfo()

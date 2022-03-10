@@ -12,9 +12,9 @@ title: TidyMass packages
   <div class="package">
     <img class="package-image" src="/images/tidymass_logo.png" alt=""></img>
     <div class="package-info">
-      <h3 style="color:red;><a href="https://tidymass.github.io/tidymass/"> tidymass </a></h3>
+      <h3 style="color:red;><a href="https://tidymass.tidymass.org/"> tidymass </a></h3>
       <p>tidymass is a meta-package that installs and load the core packages listed below.
-      <a href="https://tidymass.github.io/tidymass/" aria-hidden="true">More information ...</a></p>
+      <a href="https://tidymass.tidymass.org/" aria-hidden="true">More information ...</a></p>
     </div>
   </div>
   <div class="package">

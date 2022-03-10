@@ -7,3 +7,15 @@ public/
 index_cache
 content/start/case-study/cache
 content/learn/work/bayes-opt/cache
+
+content/start/create_mass_dataset/create_mass_dataset_cache
+
+content/start/tidymass_install/tidymass_install_cache
+content/start/tidymass_update/tidymass_update_cache
+content/start/docker/docker_cache
+content/start/build_docker/build_docker_cache
+
+
+
+
+
