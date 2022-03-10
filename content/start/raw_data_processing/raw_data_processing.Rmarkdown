@@ -76,7 +76,7 @@ All the results will be placed in the folder `mzxml_ms1_data/POS/Result`. More i
 
 You can just load the `object`, which is a `mass_dataset` class object.
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
+```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("mzxml_ms1_data/POS/Result/object")
 object
 ```
@@ -124,7 +124,7 @@ massprocesser::process_data(
 
 Same with positive mode.
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
+```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("mzxml_ms1_data/NEG/Result/object")
 object
 ```

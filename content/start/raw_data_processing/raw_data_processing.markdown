@@ -96,6 +96,23 @@ You can just load the `object`, which is a `mass_dataset` class object.
 ```r
 load("mzxml_ms1_data/POS/Result/object")
 object
+#> -------------------- 
+#> massdataset version: 0.99.8 
+#> -------------------- 
+#> 1.expression_data:[ 10149 x 259 data.frame]
+#> 2.sample_info:[ 259 x 4 data.frame]
+#> 3.variable_info:[ 10149 x 3 data.frame]
+#> 4.sample_info_note:[ 4 x 2 data.frame]
+#> 5.variable_info_note:[ 3 x 2 data.frame]
+#> 6.ms2_data:[ 0 variables x 0 MS2 spectra]
+#> -------------------- 
+#> Processing information (extract_process_info())
+#> create_mass_dataset ---------- 
+#>       Package         Function.used                Time
+#> 1 massdataset create_mass_dataset() 2022-02-22 16:37:06
+#> process_data ---------- 
+#>         Package Function.used                Time
+#> 1 massprocesser  process_data 2022-02-22 16:36:42
 ```
 
 We can see that there are 10,149 metabolic features in positive mode.
@@ -147,6 +164,23 @@ Same with positive mode.
 ```r
 load("mzxml_ms1_data/NEG/Result/object")
 object
+#> -------------------- 
+#> massdataset version: 0.99.8 
+#> -------------------- 
+#> 1.expression_data:[ 8804 x 259 data.frame]
+#> 2.sample_info:[ 259 x 4 data.frame]
+#> 3.variable_info:[ 8804 x 3 data.frame]
+#> 4.sample_info_note:[ 4 x 2 data.frame]
+#> 5.variable_info_note:[ 3 x 2 data.frame]
+#> 6.ms2_data:[ 0 variables x 0 MS2 spectra]
+#> -------------------- 
+#> Processing information (extract_process_info())
+#> create_mass_dataset ---------- 
+#>       Package         Function.used                Time
+#> 1 massdataset create_mass_dataset() 2022-02-22 16:38:19
+#> process_data ---------- 
+#>         Package Function.used                Time
+#> 1 massprocesser  process_data 2022-02-22 16:38:02
 ```
 
 We can see that there are 8,804 metabolic features in negative mode.
