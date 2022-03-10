@@ -8,12 +8,18 @@ index_cache
 content/start/case-study/cache
 content/learn/work/bayes-opt/cache
 
-content/start/create_mass_dataset/create_mass_dataset_cache
+content/start/create_mass_dataset/cache
 
-content/start/tidymass_install/tidymass_install_cache
-content/start/tidymass_update/tidymass_update_cache
-content/start/docker/docker_cache
-content/start/build_docker/build_docker_cache
+content/start/tidymass_install/cache
+content/start/tidymass_update/cache
+content/start/docker/cache
+content/start/build_docker/cache
+
+content/start/demo_data/cache
+content/start/demo_data/sample_info
+content/start/create_mass_dataset/cache
+
+content/start/data_convert/cache
 
 
 
