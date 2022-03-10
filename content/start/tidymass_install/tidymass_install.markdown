@@ -69,6 +69,8 @@ remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
 
 <img src="figures/Screen-Shot-9.png" width="100%" style="display: block; margin: auto;" />
 
+![](figures/Screen-Shot-9.png)
+
 ### Install tidymass packages one by one
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
@@ -117,7 +119,6 @@ usethis::create_github_token()
 It will open a page in browser, and create a "New personal access token" and copy it.
 
 ![](figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png)
-
 2. Then type this code:
 
 

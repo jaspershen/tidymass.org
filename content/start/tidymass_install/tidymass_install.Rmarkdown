@@ -68,6 +68,13 @@ remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
 knitr::include_graphics("figures/Screen-Shot-9.png")
 ```
 
+```{r cell-fig, echo = FALSE, fig.align='center', out.width="100%"}
+knitr::include_graphics("figures/cells.png")
+```
+
+![](figures/Screen-Shot-9.png)
+![](figures/cells.png)
+
 ### Install tidymass packages one by one
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
@@ -113,7 +120,6 @@ usethis::create_github_token()
 It will open a page in browser, and create a "New personal access token" and copy it.
 
 ![](figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png)
-
 2. Then type this code:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
