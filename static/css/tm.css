@@ -333,7 +333,7 @@ a.productName {
 }
 
 #menu {
-  text-transform: none;
+  text-transform: uppercase;
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
 }
