@@ -13,7 +13,7 @@ googleAnalytics = "UA-143314205-1"
 
 relativeurls = false
 languageCode = "en-us"
-description = "A collection of R packages for modeling and machine learning using tidyverse principles."
+description = "An Object-oriented Reproducible Analysis Framework for LC-MS Data."
 disqusShortname = "blog-at8qrhng8"
 ignoreFiles = ["\\.Rmd$", "_cache$", "\\.Rmarkdown$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 # below is critical for non-authors to show up in article listing
