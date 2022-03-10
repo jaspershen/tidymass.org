@@ -1,0 +1,28 @@
+---
+title: "Download demo data"
+weight: 6
+tags: [rsample, parsnip, tune, dials, workflows, yardstick]
+categories: [tuning]
+description: | 
+  Estimate the best values for hyperparameters that cannot be learned directly during model training.
+---
+
+```{r setup, include = FALSE, message = FALSE, warning = FALSE}
+source(here::here("content/start/common.R"))
+```
+
+## **Introduction**
+
+The demo data for tidymass is untargeted metabolomics by RPLC-QEplus (Thermo). 259 samples in total.
+
+* Subject samples: 220 blood samples. 110 control samples and 110 case samples.
+
+* QC samples: 39
+
+## **Download demo data**
+
+## **Session information**
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+sessionInfo()
+```
