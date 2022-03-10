@@ -551,7 +551,7 @@ a {
     background-color: #f8f8f8;
     padding: 20px; }
   .section.uppercaseControlGroupTitles .controlGroupTitle {
-    text-transform: uppercase; }
+    text-transform: none; }
   .section.sectionBottomBorder {
     padding-bottom: 10px;
     margin-bottom: 10px; }
@@ -1277,7 +1277,7 @@ table {
 table thead{
   font-weight: 600;
   background-color: #dfe3eb;
-  text-transform: uppercase;
+  text-transform: none;
   color: #5c677e;
 }
 

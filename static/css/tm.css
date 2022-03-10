@@ -108,7 +108,7 @@ a {
 
 div.tagline {
   font-family: 'Lato', sans-serif !important;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 1.2rem !important;
   font-weight: bold;
   letter-spacing: 2px;
@@ -128,7 +128,7 @@ h1, h2, h3, .itemTitle {
   font-family: 'Lato', sans-serif;
   font-weight: normal;
   font-size: 1.3em;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1.5pt;
 }
 
@@ -181,7 +181,7 @@ h4 code {
 /*#TOC, */
 .column25 .sectionTitle, 
 .sectionTitle a {
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
   font-weight: bold;
@@ -230,7 +230,7 @@ h4 code {
 
 .column25-left .sectionTitle { /* Numbered content sections, hanging indent */
   display: flex; 
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
   font-weight: bold;
@@ -247,7 +247,7 @@ h4 code {
 }
 
 .column25-left .sectionTitle.start:first-of-type a { /* GET STARTED LABEL */
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
   font-weight: bold;
@@ -302,7 +302,7 @@ h4 code {
 .icon-attribution, 
 .icon-attribution a {
   font-size: 9pt;
-  text-transform: uppercase;
+  text-transform: none;
   color: #a19ea9;
 }
 
@@ -333,7 +333,7 @@ a.productName {
 }
 
 #menu {
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
 }
@@ -469,7 +469,7 @@ html {
 
 a.learn-top-nav-item,
 .tutorial #TableOfContents a {
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
   font-weight: bold;
@@ -590,13 +590,13 @@ table.dataTable.no-footer,
 
 table.dataTable thead {
 	background-color: #eab0c41a;
-	text-transform: uppercase;
+	text-transform: none;
 }
 
 /*----Make all TOCs sentence case----*/
 
 #TableOfContents:first-letter {
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 sup {
@@ -663,7 +663,7 @@ sup {
 
 #homeContent .blurb .event .eventTitle,
 #homeContent .blurb .event .eventTitle a {
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2pt;
   font-weight: bold !important;
   color: #ca235e;
