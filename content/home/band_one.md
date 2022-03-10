@@ -22,4 +22,4 @@ install.packages("remotes")
 remotes::install_gitlab("jaspershen/tidymass")
 ```
 
-More information can be found [here](https://tidymass.github.io/tidymass/articles/packages.html).
+More information can be found [here](https://www.tidymass.org/packages/).

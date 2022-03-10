@@ -12,15 +12,15 @@
       <div class="hexBadges">
         {{ $col0 := .Params.col0 }}
         {{ with $col0 }}
-        {{ with .row1 }}<a href="https://tidymass.github.io/tidymass/"><div class=""></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/tidymass_logo.png" alt="{{ . }} hex sticker" class="r1 c0"></a>{{ end }}
-        {{ with .row2 }}<a href="https://{{ $.Site.Params.hex_base_url }}{{ . }}"><div class="filtered r2 c0"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/metid_logo2.png" alt="{{ . }} hex sticker" class="r2 c0"></a>{{ end }}
-        {{ with .row3 }}<a href="https://{{ $.Site.Params.hex_base_url }}{{ . }}"><div class="filtered r3 c0"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/massdataset_logo.png" alt="{{ . }} hex sticker" class="r3 c0"></a>{{ end }}
+        {{ with .row1 }}<a href="https://tidymass.tidymass.org/"><div class=""></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/tidymass_logo.png" alt="{{ . }} hex sticker" class="r1 c0"></a>{{ end }}
+        {{ with .row2 }}<a href="https://metid.tidymass.org/"><div class="filtered r2 c0"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/metid_logo2.png" alt="{{ . }} hex sticker" class="r2 c0"></a>{{ end }}
+        {{ with .row3 }}<a href="https://massdataset.tidymass.org/"><div class="filtered r3 c0"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/massdataset_logo.png" alt="{{ . }} hex sticker" class="r3 c0"></a>{{ end }}
         {{ end }}
         {{ $col2 := .Params.col2 }}
         {{ with $col2 }}
-        {{ with .row2 }}<a href="https://{{ $.Site.Params.hex_base_url }}{{ . }}"><div class="filtered r2 c2"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/massprocesser_logo.png" alt="{{ . }} hex sticker" class="r2 c2"></a>{{ end }}
-        {{ with .row3 }}<a href="https://{{ $.Site.Params.hex_base_url }}{{ . }}"><div class="filtered r3 c2"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/masscleaner_logo.png" alt="{{ . }} hex sticker" class="r3 c2"></a>{{ end }}
-        {{ with .row4 }}<a href="https://{{ $.Site.Params.hex_base_url }}{{ . }}"><div class="filtered r4 c2"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/massqc_logo.png" alt="{{ . }} hex sticker" class="r4 c2"></a>{{ end }}
+        {{ with .row2 }}<a href="https://massprocesser.tidymass.org/"><div class="filtered r2 c2"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/massprocesser_logo.png" alt="{{ . }} hex sticker" class="r2 c2"></a>{{ end }}
+        {{ with .row3 }}<a href="https://masscleaner.tidymass.org/"><div class="filtered r3 c2"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/masscleaner_logo.png" alt="{{ . }} hex sticker" class="r3 c2"></a>{{ end }}
+        {{ with .row4 }}<a href="https://massqc.tidymass.org/"><div class="filtered r4 c2"></div><img src="https://raw.githubusercontent.com/tidymass/tidymass/master/man/figures/massqc_logo.png" alt="{{ . }} hex sticker" class="r4 c2"></a>{{ end }}
         {{ end }}
       </div>
 
@@ -66,7 +66,7 @@
 
   <div class="band third">
     <div class="bandContent">
-      <div class="hideOnMobile"><img class="bee1" src="images/parsnip-flagger.jpg" alt=""></div>
+      <div class="hideOnMobile"><a href="https://www.tidyverse.org/"><img class="bee1" src="images/tidyverse-logo.png" alt=""></div>
       <div class="blurb">
         <div class="tagline">
           {{ .Title }}
