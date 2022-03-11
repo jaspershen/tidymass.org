@@ -22,3 +22,11 @@ You can learn how to install `tidymass`, and update it. You can also find here h
 
 You can find here how to download the demo data and create `mass_dataset` class by yourself.
 
+## Part 3. Data processing and analysis using tidymass
+
+Here, you can learn how to use `tidymass` for data processing and analysis, from data converting to biological function mining. 
+
+## Part 4. Case study
+
+The code, data and docker image of case study in our manuscript are provided here.
+
