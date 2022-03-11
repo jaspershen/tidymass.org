@@ -4,18 +4,22 @@ title: "More software"
 
 # Other pipleline integrated with `tidymass`
 
-# xcmsrocker
+# [xcmsrocker](https://github.com/yufree/xcmsrocker)
 
 `xcmsrocker` is developed by [Dr. Miao Yu](https://yufree.cn/), which is a linux based docker image to host the workflow of R based metabolomics software. It includes multiple mainstream R packages used in metabolomics study with RStduio as IDE. Such image could be deployed on single machine or clusters on the go. Besides, rmwf package is attached in this image to provide detailed workflow template( File - New File - R Markdown - From Template - Select template with {rmwf}) and facilitate the users to perform metabolomics data analysis and/or comparisons. Specifically, paired mass distances dependent analysis (PMDDA) and reactomics analysis templates could be found here. 
 
+![](figures/pmdda.gif)
+
 Now `tidymass` is also integrated in `xcmsrocker`.
 
-[`xcmsrocker` link](https://github.com/yufree/xcmsrocker)
+[`xcmsrocker` link](https://github.com/yufree/xcmsrocker) `r icons::fontawesome("link")`
 
-# Stanford Data Ocean
+# [Stanford Data Ocean](https://innovations.stanford.edu/sdo)
 
 Stanford Data Ocean is the first serverless precision medicine educational platform for people of all experience levels to explore important questions.
 
 The platform requires zero provisioning or administration so that individuals and organizations can efficiently allocate resources to experiment with code, and scale innovative solutions.
 
-[Stanford Data Ocean link](https://innovations.stanford.edu/sdo)
+![](figures/fig2.png)
+
+[Stanford Data Ocean link](https://innovations.stanford.edu/sdo) `r icons::fontawesome("link")`
