@@ -8,8 +8,6 @@ Here, you can learn how to use `tidymass` to do the data processing and analysis
 
 <img src="figures/packages.png" alt="packages" style="width:60%;height:60%;">
 
-<img src="figures/fig1.png" alt="packages" style="width:60%;height:60%;">
-
 ## If you are new to R or the tidyverse
 
 We recommend that you start by learning some basics about R and the [tidyverse](https://www.tidyverse.org/) first, then return here when you feel ready. Here are some resources to start learning:
