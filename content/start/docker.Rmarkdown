@@ -30,10 +30,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, include = FALSE, message = FALSE, warning = FALSE}
-source(here::here("content/start/common.R"))
-```
-
 Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. So it is useful for people who want to share the code, data, and even analysis environment with other people to repeat their analysis and results.
 
 We provide a docker version of `tidymass`, all the packages in `tidymass` and the dependent packages have been installed.
@@ -43,7 +39,13 @@ We provide a docker version of `tidymass`, all the packages in `tidymass` and th
 
 Please refer to the [offical website](https://www.docker.com/get-started) to download and install docker. And then run docker.
 
-![](figures/Screen-Shot 4.png)
+```{r cell-fig, echo = FALSE, fig.align='center', out.width="70%"}
+knitr::include_graphics("figures/Screen-Shot 4.png")
+```
+
+```{r echo = FALSE, fig.align='center', out.width="70%"}
+knitr::include_graphics("img/fig1.png")
+```
 
 ## **Pull the tidymass image**
 
@@ -71,11 +73,11 @@ docker run -e PASSWORD=tidymass -v ~/Desktop:/home/rstudio/ -p 8787:8787 jaspers
 
 Then open the browser and visit http://localhost:8787 to power on RStudio server. The user name is `rstudio` and the password is `tidymass`.
 
-![](figures/Screen-Shot 5.png)
+![](figures/Screen-Shot-5-2.png)
 
-![](figures/Screen-Shot 6.png)
+![](figures/Screen-Shot-6-2.png)
 
-![](figures/Screen-Shot 7.png)
+![](figures/Screen-Shot-7-2.png)
 ![](figures/Untitled.gif)
 
 ## **Demo data and example analysis code**
@@ -86,7 +88,7 @@ In this tidymass docker image, a folder named "demo_data" is included to help us
 
 Open the `tidymass_demo.Rmd` file in `demo_data` folder, and then run it code chunk by chunk or just render it by clicking `Knit` on Rstudio, you will get a reporting result (HTML format) of all the whole workflow.
 
-![](figures/Untitled 2.gif)
+![](figures/Untitled-2.gif)
 ## **Session information**
 
 

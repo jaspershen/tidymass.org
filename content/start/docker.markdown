@@ -22,8 +22,6 @@ vignette: >
 
 
 
-
-
 Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. So it is useful for people who want to share the code, data, and even analysis environment with other people to repeat their analysis and results.
 
 We provide a docker version of `tidymass`, all the packages in `tidymass` and the dependent packages have been installed.
@@ -33,7 +31,9 @@ We provide a docker version of `tidymass`, all the packages in `tidymass` and th
 
 Please refer to the [offical website](https://www.docker.com/get-started) to download and install docker. And then run docker.
 
-![](figures/Screen-Shot 4.png)
+<img src="figures/Screen-Shot 4.png" width="70%" style="display: block; margin: auto;" />
+
+<img src="img/fig1.png" width="70%" style="display: block; margin: auto;" />
 
 ## **Pull the tidymass image**
 
@@ -61,7 +61,7 @@ docker run -e PASSWORD=tidymass -v ~/Desktop:/home/rstudio/ -p 8787:8787 jaspers
 
 Then open the browser and visit http://localhost:8787 to power on RStudio server. The user name is `rstudio` and the password is `tidymass`.
 
-![](figures/Screen-Shot 5.png)
+![](figures/Screen-Shot-5.png)
 
 ![](figures/Screen-Shot 6.png)
 
@@ -101,12 +101,12 @@ sessionInfo()
 #> [1] magrittr_2.0.2
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] bookdown_0.24   here_1.0.1      rprojroot_2.0.2 digest_0.6.29  
-#>  [5] R6_2.5.1        jsonlite_1.7.3  evaluate_0.15   blogdown_1.7   
-#>  [9] rlang_1.0.1     stringi_1.7.6   cli_3.2.0       rstudioapi_0.13
-#> [13] jquerylib_0.1.4 bslib_0.3.1     rmarkdown_2.11  tools_4.1.2    
-#> [17] stringr_1.4.0   xfun_0.29       yaml_2.3.4      fastmap_1.1.0  
-#> [21] compiler_4.1.2  htmltools_0.5.2 knitr_1.37      sass_0.4.0
+#>  [1] bookdown_0.24   digest_0.6.29   R6_2.5.1        jsonlite_1.7.3 
+#>  [5] evaluate_0.15   highr_0.9       blogdown_1.7    rlang_1.0.1    
+#>  [9] stringi_1.7.6   cli_3.2.0       rstudioapi_0.13 jquerylib_0.1.4
+#> [13] bslib_0.3.1     rmarkdown_2.11  tools_4.1.2     stringr_1.4.0  
+#> [17] xfun_0.29       yaml_2.3.4      fastmap_1.1.0   compiler_4.1.2 
+#> [21] htmltools_0.5.2 knitr_1.37      sass_0.4.0
 ```
 
 
