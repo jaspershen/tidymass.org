@@ -6,7 +6,7 @@ description: "What do you need to know to start using tidymass? Learn what you n
 
 Here, you can learn how to use `tidymass` to do the data processing and analysis for the metabolomics data. It contains several parts.
 
-![](figures/packages.png)
+<img src="figures/packages.png" alt="packages" style="width:70%;height:70%;">
 
 ## If you are new to R or the tidyverse
 
@@ -27,6 +27,8 @@ You can find here how to download the demo data and create `mass_dataset` class 
 ## Part 3. Data processing and analysis using tidymass
 
 Here, you can learn how to use `tidymass` for data processing and analysis, from data converting to biological function mining. 
+
+<img src="figures/Figure2.png" alt="workflow" style="width:100%;height:100%;">
 
 ## Part 4. Case study
 
