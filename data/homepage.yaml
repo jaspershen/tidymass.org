@@ -4,11 +4,11 @@ bandtwo:
   icon: fa-folder-open
   icon_pack: fas
   what: |
-    What do you need to know to start using tidymodels? Learn what you need in 5 articles, starting with how to create a model and ending with a beginning-to-end modeling case study.
+    You can download the demo data and learn how to use the `tidymass` for LC-MS data processing and analysis.
 
 - url: /more/
   title: More software
-  icon: fa-laptop-code
-  icon_pack: far
+  icon: fa-code
+  icon_pack: fas
   what: |
-    After you are comfortable with the basics, you can learn how to go farther with tidymodels in your modeling and machine learning projects.
+    `Tidymass` is also integrated with other pipelines, found more [here](https://www.tidymass.org/more/).

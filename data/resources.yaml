@@ -1,21 +1,14 @@
 resources:
-- url: /find/
-  title: Find
-  icon: fa-search
+- url: /contact/
+  title: Contact us
+  icon: fa-envelope
   icon_pack: fas
   what: |
-    Explore searchable tables of all tidymodels packages and functions.
-
-- url: /books/
-  title: Books
-  icon: fa-book-open
-  icon_pack: fas
-  what: |
-    Study up on statistics and modeling with our comprehensive books.
+    Don't hesitate to reach us out if you have any questions!
 
 - url: https://www.tidyverse.org/tags/tidymodels/
   title: News
   icon: fa-bullhorn
   icon_pack: fas
   what: |
-    Hear the latest about tidymodels packages at the [tidyverse blog](https://www.tidyverse.org/tags/tidymodels/). 
+    Hear the latest about tidymass packages at the [tidyverse news](https://www.tidymass.org/news/). 
