@@ -9,38 +9,53 @@ index_cache
 content/start/create_mass_dataset/index_cache
 
 content/start/tidymass_install/index_cache
+content/start/tidymass_install/figures
 content/start/tidymass_update/index_cache
+content/start/tidymass_update/figures
 content/start/docker/index_cache
+content/start/docker/figures
 content/start/build_docker/index_cache
+content/start/build_docker/figures
 
 content/start/demo_data/index_cache
+content/start/demo_data/figures
 content/start/sample_info
 content/start/create_mass_dataset/index_cache
+content/start/create_mass_dataset/figures
 
 content/start/data_convert/index_cache
+content/start/data_convert/figures
 content/start/raw_data_processing/index_cache
+content/start/raw_data_processing/figures
 content/start/mzxml_ms1_data
+content/start/mzxml_ms1_data/
 
 content/start/explore_data/index_cache
+content/start/explore_data/figures
 
 content/start/data_cleaning
 
 content/start/cleaning/index_cache
+content/start/cleaning/figures
 
 content/start/figures
 
 content/start/metabolite_annotation
 content/start/annotation/index_cache
+content/start/annotation/figures
 
 content/start/mgf_ms2_data
 
 content/start/statistical_analysis
 content/start/statistical/index_cache
+content/start/statistical/figures
 
-content/start/statistical/pathway_enrichment
-content/start/statistical/pathway/index_cache
+content/start/pathway_enrichment
+content/start/pathway/index_cache
+content/start/pathway/figures
 
-content/start/statistical/whole_workflow/index_cache
+content/start/whole_workflow/index_cache
+content/start/whole_workflow/figures
 
 
 
