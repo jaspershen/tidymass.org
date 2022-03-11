@@ -26,7 +26,7 @@ vignette: >
 
 You can use the `tidymass` to check the version of all packages and update them. 
 
-## **Check version of tidymass**
+## Check version of tidymass
 
 If you want to check if there are updates for `tidymass` and packages in it. Just check it like this.
 
@@ -35,7 +35,7 @@ If you want to check if there are updates for `tidymass` and packages in it. Jus
 tidymass::check_tidymass_version()
 ```
 
-## **Update tidymass**
+## Update tidymass
 
 The `update_tidymass()` function can be used to update `tidymass` and packages in it.
 
@@ -46,7 +46,7 @@ tidymass::update_tidymass(from = "github")
 
 > If the `from = "github"` doesn't work, try set it as `from = "gitlab"` or `from = "gitee"`.
 
-## **Session information**
+## Session information
 
 
 ```r
