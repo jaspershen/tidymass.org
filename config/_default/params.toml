@@ -56,7 +56,7 @@ MathJaxVersion = "2.7.1"
     link_hover = "#76b5c5" #lighter
     # Footer
     footer_primary = "#bebebd"
-    footer_text = "#CA225E" 
+    footer_text = "#1e81b0" 
     # Backgrounds
     background = "#ffffff" 
     home_section_odd = "#ffffff"
