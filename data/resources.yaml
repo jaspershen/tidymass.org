@@ -6,7 +6,7 @@ resources:
   what: |
     Don't hesitate to reach us out if you have any questions!
 
-- url: https://www.tidyverse.org/tags/tidymodels/
+- url: /news/
   title: News
   icon: fa-bullhorn
   icon_pack: fas

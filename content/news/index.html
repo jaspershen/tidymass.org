@@ -1,0 +1,217 @@
+---
+title: "News"
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="massdataset-version-0.99.20" class="section level1">
+<h1><code>massdataset</code> version 0.99.20</h1>
+<p>Now, <code>massdataset</code> supports <code>slice_</code> family functions in <code>tidyverse</code>.</p>
+<pre class="r"><code>library(massdataset)
+#&gt; Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.7)
+#&gt; than is installed on your system (1.0.8). This might lead to errors
+#&gt; when loading mzR. If you encounter such issues, please send a report,
+#&gt; including the output of sessionInfo() to the Bioc support forum at 
+#&gt; https://support.bioconductor.org/. For details see also
+#&gt; https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
+#&gt; ── Attaching packages ─────────────────────────────────── massdataset 0.99.20 ──
+#&gt; ✓ masstools 0.99.5     ✓ ggplot2   3.3.5
+#&gt; ── Conflicts ──────────────────────────────────────── massdataset_conflicts() ──
+#&gt; x massdataset::apply()     masks base::apply()
+#&gt; x methods::body&lt;-()        masks base::body&lt;-()
+#&gt; x massdataset::colMeans()  masks base::colMeans()
+#&gt; x massdataset::colSums()   masks base::colSums()
+#&gt; x massdataset::filter()    masks stats::filter()
+#&gt; x massdataset::intersect() masks base::intersect()
+#&gt; x methods::kronecker()     masks base::kronecker()
+#&gt; x masstools::mz_rt_match() masks massdataset::mz_rt_match()
+#&gt; x massdataset::rowMeans()  masks base::rowMeans()
+#&gt; x massdataset::rowSums()   masks base::rowSums()
+#&gt; 
+#&gt; Attaching package: &#39;massdataset&#39;
+#&gt; The following object is masked from &#39;package:stats&#39;:
+#&gt; 
+#&gt;     filter
+library(tidyverse)
+#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+#&gt; ✓ tibble  3.1.6          ✓ dplyr   1.0.8     
+#&gt; ✓ tidyr   1.2.0          ✓ stringr 1.4.0     
+#&gt; ✓ readr   2.1.2          ✓ forcats 0.5.1.9000
+#&gt; ✓ purrr   0.3.4
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; x tidyr::extract()   masks magrittr::extract()
+#&gt; x dplyr::filter()    masks massdataset::filter(), stats::filter()
+#&gt; x dplyr::lag()       masks stats::lag()
+#&gt; x purrr::set_names() masks magrittr::set_names()
+data(&quot;expression_data&quot;)
+data(&quot;sample_info&quot;)
+data(&quot;sample_info_note&quot;)
+data(&quot;variable_info&quot;)
+data(&quot;variable_info_note&quot;)
+object =
+  create_mass_dataset(
+    expression_data = expression_data,
+    sample_info = sample_info,
+    variable_info = variable_info,
+    sample_info_note = sample_info_note,
+    variable_info_note = variable_info_note
+  )
+object
+#&gt; -------------------- 
+#&gt; massdataset version: 0.99.20 
+#&gt; -------------------- 
+#&gt; 1.expression_data:[ 1000 x 8 data.frame]
+#&gt; 2.sample_info:[ 8 x 4 data.frame]
+#&gt; 3.variable_info:[ 1000 x 3 data.frame]
+#&gt; 4.sample_info_note:[ 4 x 2 data.frame]
+#&gt; 5.variable_info_note:[ 3 x 2 data.frame]
+#&gt; 6.ms2_data:[ 0 variables x 0 MS2 spectra]
+#&gt; -------------------- 
+#&gt; Processing information (extract_process_info())
+#&gt; create_mass_dataset ---------- 
+#&gt;       Package         Function.used                Time
+#&gt; 1 massdataset create_mass_dataset() 2022-03-10 20:05:48
+object %&gt;% 
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;% 
+  slice_head(n = 3)
+#&gt; -------------------- 
+#&gt; massdataset version: 0.99.20 
+#&gt; -------------------- 
+#&gt; 1.expression_data:[ 1000 x 3 data.frame]
+#&gt; 2.sample_info:[ 3 x 4 data.frame]
+#&gt; 3.variable_info:[ 1000 x 3 data.frame]
+#&gt; 4.sample_info_note:[ 4 x 2 data.frame]
+#&gt; 5.variable_info_note:[ 3 x 2 data.frame]
+#&gt; 6.ms2_data:[ 0 variables x 0 MS2 spectra]
+#&gt; -------------------- 
+#&gt; Processing information (extract_process_info())
+#&gt; create_mass_dataset ---------- 
+#&gt;       Package         Function.used                Time
+#&gt; 1 massdataset create_mass_dataset() 2022-03-10 20:05:48
+#&gt; slice_head ---------- 
+#&gt;       Package Function.used                Time
+#&gt; 1 massdataset  slice_head() 2022-03-10 20:05:48</code></pre>
+</div>
+<div id="session-information" class="section level1">
+<h1><strong>Session information</strong></h1>
+<pre class="r"><code>sessionInfo()
+#&gt; R version 4.1.2 (2021-11-01)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Big Sur 10.16
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  
+#&gt; [8] base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] dplyr_1.0.8          metid_1.2.4          metpath_0.99.4      
+#&gt;  [4] massstat_0.99.13     ggfortify_0.4.14     massqc_0.99.7       
+#&gt;  [7] masscleaner_0.99.7   xcms_3.16.1          MSnbase_2.20.4      
+#&gt; [10] ProtGenerics_1.26.0  S4Vectors_0.32.3     mzR_2.28.0          
+#&gt; [13] Rcpp_1.0.8           Biobase_2.54.0       BiocGenerics_0.40.0 
+#&gt; [16] BiocParallel_1.28.3  massprocesser_0.99.3 ggplot2_3.3.5       
+#&gt; [19] masstools_0.99.5     massdataset_0.99.20  tidymass_0.99.6     
+#&gt; [22] magrittr_2.0.2      
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;   [1] blogdown_1.7                tidyr_1.2.0                
+#&gt;   [3] missForest_1.4              knitr_1.37                 
+#&gt;   [5] DelayedArray_0.20.0         data.table_1.14.2          
+#&gt;   [7] rpart_4.1.16                KEGGREST_1.34.0            
+#&gt;   [9] RCurl_1.98-1.5              doParallel_1.0.17          
+#&gt;  [11] generics_0.1.2              snow_0.4-4                 
+#&gt;  [13] leaflet_2.1.0               preprocessCore_1.56.0      
+#&gt;  [15] mixOmics_6.18.1             RANN_2.6.1                 
+#&gt;  [17] proxy_0.4-26                future_1.23.0              
+#&gt;  [19] tzdb_0.2.0                  xml2_1.3.3                 
+#&gt;  [21] lubridate_1.8.0             ggsci_2.9                  
+#&gt;  [23] SummarizedExperiment_1.24.0 assertthat_0.2.1           
+#&gt;  [25] tidyverse_1.3.1             viridis_0.6.2              
+#&gt;  [27] xfun_0.29                   hms_1.1.1                  
+#&gt;  [29] jquerylib_0.1.4             evaluate_0.15              
+#&gt;  [31] DEoptimR_1.0-10             fansi_1.0.2                
+#&gt;  [33] dbplyr_2.1.1                readxl_1.3.1               
+#&gt;  [35] igraph_1.2.11               DBI_1.1.2                  
+#&gt;  [37] htmlwidgets_1.5.4           MsFeatures_1.3.0           
+#&gt;  [39] rARPACK_0.11-0              purrr_0.3.4                
+#&gt;  [41] ellipsis_0.3.2              RSpectra_0.16-0            
+#&gt;  [43] crosstalk_1.2.0             backports_1.4.1            
+#&gt;  [45] bookdown_0.24               ggcorrplot_0.1.3           
+#&gt;  [47] MatrixGenerics_1.6.0        vctrs_0.3.8                
+#&gt;  [49] remotes_2.4.2               withr_2.4.3                
+#&gt;  [51] ggforce_0.3.3               itertools_0.1-3            
+#&gt;  [53] robustbase_0.93-9           checkmate_2.0.0            
+#&gt;  [55] cluster_2.1.2               lazyeval_0.2.2             
+#&gt;  [57] crayon_1.5.0                ellipse_0.4.2              
+#&gt;  [59] pkgconfig_2.0.3             tweenr_1.0.2               
+#&gt;  [61] GenomeInfoDb_1.30.0         nnet_7.3-17                
+#&gt;  [63] rlang_1.0.1                 globals_0.14.0             
+#&gt;  [65] lifecycle_1.0.1             affyio_1.64.0              
+#&gt;  [67] extrafontdb_1.0             fastDummies_1.6.3          
+#&gt;  [69] MassSpecWavelet_1.60.0      modelr_0.1.8               
+#&gt;  [71] cellranger_1.1.0            randomForest_4.7-1         
+#&gt;  [73] polyclip_1.10-0             matrixStats_0.61.0         
+#&gt;  [75] Matrix_1.4-0                reprex_2.0.1               
+#&gt;  [77] base64enc_0.1-3             GlobalOptions_0.1.2        
+#&gt;  [79] png_0.1-7                   viridisLite_0.4.0          
+#&gt;  [81] rjson_0.2.21                clisymbols_1.2.0           
+#&gt;  [83] bitops_1.0-7                pander_0.6.4               
+#&gt;  [85] Biostrings_2.62.0           shape_1.4.6                
+#&gt;  [87] stringr_1.4.0               parallelly_1.30.0          
+#&gt;  [89] robust_0.7-0                readr_2.1.2                
+#&gt;  [91] jpeg_0.1-9                  gridGraphics_0.5-1         
+#&gt;  [93] scales_1.1.1                plyr_1.8.6                 
+#&gt;  [95] zlibbioc_1.40.0             compiler_4.1.2             
+#&gt;  [97] RColorBrewer_1.1-2          pcaMethods_1.86.0          
+#&gt;  [99] clue_0.3-60                 rrcov_1.6-2                
+#&gt; [101] cli_3.2.0                   affy_1.72.0                
+#&gt; [103] XVector_0.34.0              listenv_0.8.0              
+#&gt; [105] patchwork_1.1.1             pbapply_1.5-0              
+#&gt; [107] htmlTable_2.4.0             Formula_1.2-4              
+#&gt; [109] MASS_7.3-55                 tidyselect_1.1.1           
+#&gt; [111] vsn_3.62.0                  stringi_1.7.6              
+#&gt; [113] forcats_0.5.1.9000          yaml_2.3.4                 
+#&gt; [115] latticeExtra_0.6-29         MALDIquant_1.21            
+#&gt; [117] ggrepel_0.9.1               grid_4.1.2                 
+#&gt; [119] sass_0.4.0                  tools_4.1.2                
+#&gt; [121] parallel_4.1.2              circlize_0.4.14            
+#&gt; [123] rstudioapi_0.13             MsCoreUtils_1.6.0          
+#&gt; [125] foreach_1.5.2               foreign_0.8-82             
+#&gt; [127] gridExtra_2.3               farver_2.1.0               
+#&gt; [129] mzID_1.32.0                 ggraph_2.0.5               
+#&gt; [131] rvcheck_0.2.1               digest_0.6.29              
+#&gt; [133] BiocManager_1.30.16         GenomicRanges_1.46.1       
+#&gt; [135] broom_0.7.12                ncdf4_1.19                 
+#&gt; [137] httr_1.4.2                  ComplexHeatmap_2.10.0      
+#&gt; [139] colorspace_2.0-2            rvest_1.0.2                
+#&gt; [141] XML_3.99-0.8                fs_1.5.2                   
+#&gt; [143] IRanges_2.28.0              splines_4.1.2              
+#&gt; [145] yulab.utils_0.0.4           graphlayouts_0.8.0         
+#&gt; [147] ggplotify_0.1.0             plotly_4.10.0              
+#&gt; [149] fit.models_0.64             jsonlite_1.7.3             
+#&gt; [151] tidygraph_1.2.0             corpcor_1.6.10             
+#&gt; [153] R6_2.5.1                    Hmisc_4.6-0                
+#&gt; [155] pillar_1.7.0                htmltools_0.5.2            
+#&gt; [157] glue_1.6.1                  fastmap_1.1.0              
+#&gt; [159] class_7.3-20                codetools_0.2-18           
+#&gt; [161] pcaPP_1.9-74                mvtnorm_1.1-3              
+#&gt; [163] furrr_0.2.3                 utf8_1.2.2                 
+#&gt; [165] lattice_0.20-45             bslib_0.3.1                
+#&gt; [167] tibble_3.1.6                zip_2.2.0                  
+#&gt; [169] openxlsx_4.2.5              Rttf2pt1_1.3.9             
+#&gt; [171] survival_3.2-13             limma_3.50.0               
+#&gt; [173] rmarkdown_2.11              munsell_0.5.0              
+#&gt; [175] e1071_1.7-9                 GetoptLong_1.0.5           
+#&gt; [177] GenomeInfoDbData_1.2.7      iterators_1.0.14           
+#&gt; [179] impute_1.68.0               haven_2.4.3                
+#&gt; [181] reshape2_1.4.4              gtable_0.3.0               
+#&gt; [183] extrafont_0.17</code></pre>
+</div>

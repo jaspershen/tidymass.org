@@ -1,0 +1,43 @@
+---
+title: "News"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# `massdataset` version 0.99.20
+
+Now, `massdataset` supports `slice_` family functions in `tidyverse`.
+
+```{r setup}
+library(massdataset)
+library(tidyverse)
+data("expression_data")
+data("sample_info")
+data("sample_info_note")
+data("variable_info")
+data("variable_info_note")
+object =
+  create_mass_dataset(
+    expression_data = expression_data,
+    sample_info = sample_info,
+    variable_info = variable_info,
+    sample_info_note = sample_info_note,
+    variable_info_note = variable_info_note
+  )
+object
+object %>% 
+  activate_mass_dataset(what = "sample_info") %>% 
+  slice_head(n = 3)
+```
+
+
+# **Session information**
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+sessionInfo()
+```
