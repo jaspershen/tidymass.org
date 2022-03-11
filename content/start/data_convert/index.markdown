@@ -34,12 +34,12 @@ Please place the raw data in one folder according to MS1 and MS2. Then you can c
 
 Just convert data into `mzXML` format data according to the parameters below:
 
-![](figures/Screen Shot 2022-01-13 at 12.06.14 AM.png)
+![](figures/fig1.png)
 ### Convert MS2 data to `mzXML` or `mgf` format data
 
 Just convert data into `mzXML` or `mgf` format data according to the parameters below:
 
-![](figures/Screen Shot 2022-01-13 at 12.09.12 AM.png)
+![](figures/fig2.png)
 
 ## Convert data using `massconverter`
 
