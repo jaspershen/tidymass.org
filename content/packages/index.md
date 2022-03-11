@@ -46,7 +46,7 @@ title: TidyMass packages
     </div>
   </div> 
   <div class="package">
-    <img class="package-image" src="/images/metid_logo.png" alt=""></img>
+    <img class="package-image" src="/images/metid_logo2.png" alt=""></img>
     <div class="package-info">
       <h3 style="color:#2ca4e4;><a href="https://metid.tidymass.org/"> metid </a></h3>
       <p>metid is used for metabolite database construction and metabolite annotation. <a href="https://metid.tidymass.org/" aria-hidden="true">More information ...</a></p>
