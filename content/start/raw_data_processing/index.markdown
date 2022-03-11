@@ -30,7 +30,7 @@ Download the demo data and [refer this article](https://tidymass.github.io/tidym
 
 We have positive and negative mode. For each mode, we have `control`, `case` and `QC` groups. Control group have 110 samples, and case group have 110 samples as well.
 
-![](figures/Screen-Shot-2022-01-13-at-10.33.07-PM.png)
+![](figures/fig1.png)
 
 ### Positive mode
 
@@ -88,7 +88,7 @@ process_data(
 
 All the results will be placed in the folder `mzxml_ms1_data/POS/Result`. More information can be found [here](https://tidymass.github.io/massprocesser/articles/raw_data_processing.html).
 
-![](figures/Screen-Shot-2.png)
+![](figures/fig2.png)
 
 You can just load the `object`, which is a `mass_dataset` class object.
 
@@ -117,7 +117,7 @@ object
 
 We can see that there are 10,149 metabolic features in positive mode.
 
-![](figures/Screen-Shot.png)
+![](figures/fig3.png)
 
 You can use the `plot_adjusted_rt()` function to get the interactive plot.
 
