@@ -6,6 +6,8 @@ description: "What do you need to know to start using tidymass? Learn what you n
 
 Here, you can learn how to use `tidymass` to do the data processing and analysis for the metabolomics data. It contains several parts.
 
+![](figures/packages.png)
+
 ## If you are new to R or the tidyverse
 
 We recommend that you start by learning some basics about R and the [tidyverse](https://www.tidyverse.org/) first, then return here when you feel ready. Here are some resources to start learning:
