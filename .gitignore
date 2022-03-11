@@ -5,33 +5,30 @@
 .DS_Store
 public/
 index_cache
-content/learn/work/bayes-opt/cache
 
-content/start/create_mass_dataset/cache
+content/start/create_mass_dataset/index_cache
 
-content/start/tidymass_install_cache
-content/start/tidymass_update_cache
-content/start/docker_cache
-content/start/build_docker_cache
+content/start/tidymass_install/index_cache
+content/start/tidymass_update/index_cache
+content/start/docker/index_cache
+content/start/build_docker/index_cache
 
-content/start/demo_data_cache
+content/start/demo_data/index_cache
 content/start/sample_info
-content/start/create_mass_dataset_cache
+content/start/create_mass_dataset/index_cache
 
-content/start/data_convert_cache
-content/start/raw_data_processing_cache
+content/start/data_convert/index_cache
+content/start/raw_data_processing/index_cache
 content/start/mzxml_ms1_data
 
-content/start/explore_data_cache
-content/start/sample_info
+content/start/explore_data/index_cache
 
 content/start/data_cleaning
 
-content/start/data_cleaning_cache
-content/start/data_cleaning_files
+content/start/cleaning/index_cache
 
 content/start/figures
-content/start/figs
+
 
 
 
