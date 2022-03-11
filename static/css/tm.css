@@ -87,7 +87,7 @@ a {
 .article-content ul li::before, 
 .learn-top-nav ul li::before {
   content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: #CA225E; /* Change the color */
+  color: #1e81b0; /* Change the color */
   display: inline-block; /* Needed to add space between the bullet and the text */
   width: 1.5em; /* Also needed for space (tweak if needed) */
   margin-left: -1.5em; /* Also needed for space (tweak if needed) */
@@ -117,7 +117,7 @@ div.tagline {
 .article-title,               /* Most page titles */
 .column75 div.sectionTitle {  /* Learn page section title */
   font-family: 'Lato', sans-serif;
-  color: #CA225E;
+  color: #1e81b0;
   font-weight: normal;
   text-transform: none;
   letter-spacing: normal;
@@ -133,11 +133,11 @@ h1, h2, h3, .itemTitle {
 }
 
 h2 {
-  color: #1a162d;
+  color: #1e81b0;
 }
 
 .itemTitle a { /* For Learn Page headers */
-  color: #1a162d;
+  color:#1e81b0;
 }
 
 .itemTitle a:hover { /* For Learn List Page headers */
@@ -147,11 +147,11 @@ h2 {
 
 h3 {
   font-size: 1.1em;
-  color: #1a162d90;
+  color: #1e81b0;
 }
 
 h3 a {
-  color: #CA225E;
+  color: #1e81b0;
   text-transform: none;
   font-size: 1.5em;
   letter-spacing: normal;
@@ -159,7 +159,7 @@ h3 a {
 
 h4 {
   font-size: 1.1em;
-  color: #1a162d90;
+  color: #1e81b0;
 }
 
 
@@ -188,7 +188,7 @@ h4 code {
 }
 
   .sectionTitle, .sectionTitle a{
-    color: #CA225E;
+    color: #1e81b0;
   }
   
  /* #TOC a { */ /* Get Started Page TOC */
@@ -201,7 +201,7 @@ h4 code {
 #TableOfContents a, 
 .articleCategory a {
   font-family: 'Lato', sans-serif;
-  color: #1a162d99;
+  color: #1e81b0;
   transition: color 0.3s;
   font-size: 15px;
   letter-spacing: 1pt;
@@ -238,7 +238,7 @@ h4 code {
 
 .column25-left .sectionTitle a {
   font-family: 'Lato', sans-serif;
-  color: #1a162d99;
+  color: #1e81b0;
   transition: color 0.3s;
   font-size: 15px !important;
   text-transform: none;
@@ -259,7 +259,7 @@ h4 code {
 }
 
 .column25-left .sectionTitle.current {
-  color: #CA225E;
+  color: #1e81b0;
   text-decoration: none;
 }
 
