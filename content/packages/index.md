@@ -41,8 +41,8 @@ title: TidyMass packages
   <div class="package">
     <img class="package-image" src="/images/massqc_logo.png" alt=""></img>
     <div class="package-info">
-      <h3 style="color:#abcc2c;><a href="https://workflows.tidymass.org/"> massqc </a></h3>
-      <p>massqc is used for data quality assessment and control. <a href="https://workflows.tidymass.org/" aria-hidden="true">More information ...</a></p>
+      <h3 style="color:#abcc2c;><a href="https://massqc.tidymass.org/"> massqc </a></h3>
+      <p>massqc is used for data quality assessment and control. <a href="https://massqc.tidymass.org/" aria-hidden="true">More information ...</a></p>
     </div>
   </div> 
   <div class="package">
@@ -78,9 +78,9 @@ title: TidyMass packages
   <div class="package">
     <img class="package-image" src="/images/massconverter_logo.png" alt=""></img>
     <div class="package-info">
-      <h3 style="color:#b45c6c;><a href="https://masstools.tidymass.org/"> massconverter </a></h3>
+      <h3 style="color:#b45c6c;><a href="https://massconverter.tidymass.org/"> massconverter </a></h3>
       <p>massconverter is used to convert mass spectrometry raw data to other format data (mzXML, mxML, etc.). 
-      <a href="https://masstools.tidymass.org/" aria-hidden="true">More information ...</a></p>
+      <a href="https://massconverter.tidymass.org/" aria-hidden="true">More information ...</a></p>
     </div>
   </div>  
 
