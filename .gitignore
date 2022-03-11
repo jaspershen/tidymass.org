@@ -37,6 +37,11 @@ content/start/mgf_ms2_data
 content/start/statistical_analysis
 content/start/statistical/index_cache
 
+content/start/statistical/pathway_enrichment
+content/start/statistical/pathway/index_cache
+
+content/start/statistical/whole_workflow/index_cache
+
 
 
 
