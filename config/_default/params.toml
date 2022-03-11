@@ -2,8 +2,8 @@
 description = "An Object-oriented Reproducible Analysis Framework for LC-MS Data."
 
 # Default image for social sharing and search engines. Place image in `static/images/` folder and specify image name here.
-sharing_image = "feature_summary_large_image.jpg"
-twitter_image = "feature_summary_large_image.jpg"
+sharing_image = "tidymass_logo.png"
+twitter_image = "tidymass_logo.png"
 
 # Link custom CSS and JS assets
 #   (relative to /static/css and /static/js respectively)
@@ -30,7 +30,7 @@ MathJaxVersion = "2.7.1"
 [footer]
     github_url = "https://github.com/tidymass"
     twitter_url = ""
-    support = "Template from [tidymodels](https://www.tidymodels.org/)"
+    support = "Template is from [tidymodels](https://www.tidymodels.org/)"
 
 # leave blank in quotes for the default = true
 # to turn off, set = false (no quotes)
@@ -52,8 +52,8 @@ MathJaxVersion = "2.7.1"
 [colors]
     text = "#404040" # off-black
     # Links
-    link = "#e4244c" # main accent
-    link_hover = "#cc3168" #lighter
+    link = "#1e81b0" # main accent
+    link_hover = "#76b5c5" #lighter
     # Footer
     footer_primary = "#bebebd"
     footer_text = "#CA225E" 
@@ -64,10 +64,10 @@ MathJaxVersion = "2.7.1"
     # Menu
     menu_primary = "#bebebd" 
     menu_text = "white"
-    menu_text_active = "#e4244c"
+    menu_text_active = "#1e81b0"
     menu_text_current = "#CA225E"
     menu_decorate_current = "none"
-    menu_title = "#e4244c" # tidymass
+    menu_title = "#1e81b0" # tidymass
     menu_title_active = "white" 
     menu_box_hover = "white" 
     menu_box_active = "#fcfcfc" 
