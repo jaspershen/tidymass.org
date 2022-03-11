@@ -1,6 +1,6 @@
 ---
 title: "Download demo data"
-weight: 5
+weight: 6
 categories: [demo_data]
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)

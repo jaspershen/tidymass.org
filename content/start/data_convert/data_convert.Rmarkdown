@@ -1,6 +1,6 @@
 ---
 title: "Convert raw data to mzXML/mgf"
-weight: 6
+weight: 7
 categories: [tidymass_usage]
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)

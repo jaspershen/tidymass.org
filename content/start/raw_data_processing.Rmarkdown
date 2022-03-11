@@ -1,6 +1,6 @@
 ---
 title: "Raw data processing"
-weight: 7
+weight: 8
 categories: [tidymass_usage]
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)

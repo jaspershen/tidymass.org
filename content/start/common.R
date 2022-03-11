@@ -3,9 +3,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   dev = 'svglite', 
   dev.args = list(bg = "transparent"),
-  fig.path = "figs/",
-  collapse = TRUE,
-  cache.path = "cache/"
+  collapse = TRUE
 )
 options(width = 80, cli.width = 70)
 
