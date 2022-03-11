@@ -97,11 +97,7 @@ usethis::create_github_token()
 
 It will open a page in browser, and create a "New personal access token" and copy it.
 
-![](figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png)
-```{r, echo = FALSE, fig.align='center', out.width="70%"}
-knitr::include_graphics("figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png")
-```
-
+![](figures/fig1.png)
 2. Then type this code:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}

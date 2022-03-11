@@ -92,9 +92,7 @@ usethis::create_github_token()
 
 It will open a page in browser, and create a "New personal access token" and copy it.
 
-![](figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png)
-<img src="figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png" width="70%" style="display: block; margin: auto;" />
-
+![](figures/fig1.png)
 2. Then type this code:
 
 
@@ -223,12 +221,11 @@ sessionInfo()
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] bookdown_0.24   here_1.0.1      rprojroot_2.0.2 digest_0.6.29  
-#>  [5] R6_2.5.1        jsonlite_1.7.3  evaluate_0.15   highr_0.9      
-#>  [9] blogdown_1.7    rlang_1.0.1     stringi_1.7.6   cli_3.2.0      
-#> [13] rstudioapi_0.13 jquerylib_0.1.4 bslib_0.3.1     rmarkdown_2.11 
-#> [17] tools_4.1.2     stringr_1.4.0   xfun_0.29       yaml_2.3.4     
-#> [21] fastmap_1.1.0   compiler_4.1.2  htmltools_0.5.2 knitr_1.37     
-#> [25] sass_0.4.0
+#>  [5] R6_2.5.1        jsonlite_1.7.3  evaluate_0.15   blogdown_1.7   
+#>  [9] rlang_1.0.1     stringi_1.7.6   cli_3.2.0       rstudioapi_0.13
+#> [13] jquerylib_0.1.4 bslib_0.3.1     rmarkdown_2.11  tools_4.1.2    
+#> [17] stringr_1.4.0   xfun_0.29       yaml_2.3.4      fastmap_1.1.0  
+#> [21] compiler_4.1.2  htmltools_0.5.2 knitr_1.37      sass_0.4.0
 ```
 
 
