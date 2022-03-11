@@ -32,11 +32,11 @@ knitr::opts_knit$set(root.dir = here::here("content/start"))
 
 ## MS1 Raw data
 
-The raw data of the case study (MS1, mzML format) is accessible on `MetaboLights` with [MTBLS1122 (HILIC positive)](https://www.ebi.ac.uk/metabolights/MTBLS1122), [MTBLS1124 (HILIC negative)](https://www.ebi.ac.uk/metabolights/MTBLS1124/descriptors), [MTBLS1122 (RPLC positive)](https://www.ebi.ac.uk/metabolights/MTBLS1129/descriptors) and [MTBLS1130 (RPLC negative)](https://www.ebi.ac.uk/metabolights/MTBLS1130/descriptors).
+The raw data of the case study (MS1, mzML format) are accessible on `MetaboLights` with [MTBLS1122 (HILIC positive)](https://www.ebi.ac.uk/metabolights/MTBLS1122), [MTBLS1124 (HILIC negative)](https://www.ebi.ac.uk/metabolights/MTBLS1124/descriptors), [MTBLS1122 (RPLC positive)](https://www.ebi.ac.uk/metabolights/MTBLS1129/descriptors) and [MTBLS1130 (RPLC negative)](https://www.ebi.ac.uk/metabolights/MTBLS1130/descriptors).
 
 ## MS2 raw data
 
-The raw data of the case study (MS2, mgf format) is accessible [here](https://drive.google.com/file/d/1fR75tWp9jqp8vuWq85GvDGJ864Pb6AH2/view?usp=sharing).
+The raw data of the case study (MS2, mgf format) are accessible [here](https://drive.google.com/file/d/1fR75tWp9jqp8vuWq85GvDGJ864Pb6AH2/view?usp=sharing).
 
 ## Processed data
 
