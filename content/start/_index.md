@@ -6,7 +6,7 @@ description: "What do you need to know to start using tidymass? Learn what you n
 
 Here, you can learn how to use `tidymass` to do the data processing and analysis for the metabolomics data. It contains several parts.
 
-<img src="figures/packages.png" alt="packages" style="width:70%;height:70%;">
+<img src="figures/packages.png" alt="packages" style="width:60%;height:60%;">
 
 ## If you are new to R or the tidyverse
 
