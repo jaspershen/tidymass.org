@@ -473,7 +473,7 @@ a.learn-top-nav-item,
   letter-spacing: 2pt;
   font-size: 0.8rem !important;
   font-weight: bold;
-  color: #ca225ec9;
+  color: #1e81b0;
 }
 
 .tutorial #TableOfContents ul li {
@@ -482,7 +482,7 @@ a.learn-top-nav-item,
 
 a.learn-top-nav-item:hover,
 .tutorial #TableOfContents a:hover {
-  color: #CA225E;
+  color: #1e81b0;
   text-decoration: none;
 }
 
@@ -531,7 +531,7 @@ a.learn-top-nav-item:hover,
 
 .tutorial #TableOfContents ul li::before {
 	content: "\2022";
-	color: #CA225E;
+	color: #1e81b0;
 	display: inline-block;
 	width: 1.5em;
 	margin-left: -1.5em; 
@@ -666,7 +666,7 @@ sup {
   text-transform: none;
   letter-spacing: 2pt;
   font-weight: bold !important;
-  color: #ca235e;
+  color: #1e81b0;
   font-size: 0.85em;
 }
 
