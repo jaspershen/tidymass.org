@@ -44,7 +44,7 @@ The demo data for tidymass is untargeted metabolomics by RPLC-QEplus (Thermo). 2
 
 Download and uncompress it:
 
-![](figures/Screen-Shot-2022-01-13-at-10.33.07-PM.png)
+![](figures/fig1.png)
 
 #### 2. MS2 data (mgf format)
 
@@ -52,7 +52,7 @@ Download and uncompress it:
 
 Download and uncompress it:
 
-![](figures/Screen-Shot 14.png)
+![](figures/fig2.png)
 
 #### 3. Sample information
 
@@ -60,7 +60,7 @@ Download and uncompress it:
 
 Download and uncompress it:
 
-![](figures/Screen Shot-2022-01-13-at-10.35.54-PM.png)
+![](figures/fig3.png)
 
 ###### `sample_info_pos`
 
