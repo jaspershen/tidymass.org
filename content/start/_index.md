@@ -8,7 +8,7 @@ Here, you can learn how to use `tidymass` to do the data processing and analysis
 
 <img src="figures/packages.png" alt="packages" style="width:60%;height:60%;">
 
-<img src="images/packages.png" alt="packages" style="width:60%;height:60%;">
+<img src="figures/fig1.png" alt="packages" style="width:60%;height:60%;">
 
 ## If you are new to R or the tidyverse
 
