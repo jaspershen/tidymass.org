@@ -4,7 +4,7 @@ subtitle: Brief introduction
 description: "What do you need to know to start using tidymass? Learn what you need in 5 articles."
 ---
 
-Here, you can learn how to use `tidymass` to do the data processing and analysis for the metabolomics data. It contains several parts.
+Here, you can learn how to use `tidyMass` to do the data processing and analysis for the metabolomics data. It contains several parts.
 
 <img src="figures/packages.png" alt="packages" style="width:60%;height:60%;">
 
