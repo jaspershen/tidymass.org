@@ -30,19 +30,19 @@ knitr::opts_chunk$set(
 knitr::opts_knit$set(root.dir = here::here("content/start"))
 ```
 
-## MS1 Raw data
+# MS1 Raw data
 
 The raw data of the case study (MS1, mzML format) are accessible on `MetaboLights` with [MTBLS1122 (HILIC positive)](https://www.ebi.ac.uk/metabolights/MTBLS1122), [MTBLS1124 (HILIC negative)](https://www.ebi.ac.uk/metabolights/MTBLS1124/descriptors), [MTBLS1122 (RPLC positive)](https://www.ebi.ac.uk/metabolights/MTBLS1129/descriptors) and [MTBLS1130 (RPLC negative)](https://www.ebi.ac.uk/metabolights/MTBLS1130/descriptors).
 
-## MS2 raw data
+# MS2 raw data
 
 The raw data of the case study (MS2, mgf format) are accessible [here](https://drive.google.com/file/d/1fR75tWp9jqp8vuWq85GvDGJ864Pb6AH2/view?usp=sharing).
 
-## Processed data
+# Processed data
 
 The processed data (“mass_dataset” class) from the `massProcesser` package are [available here](https://drive.google.com/file/d/1BxILAJYAHBiIKLKaAcsTY-tgMCWV2YcO/view?usp=sharing).
 
-## Other data
+# Other data
 
 You can also download all the other dataset which are necessary for reproducible analysis for case_study.
 
@@ -56,7 +56,7 @@ You can also download all the other dataset which are necessary for reproducible
 
 5. [Statistical_analysis](https://drive.google.com/file/d/1V7U7R12Qpsh3QR3c82F9dGq9x4QxRcpj/view?usp=sharing)
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 sessionInfo()

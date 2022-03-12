@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 knitr::opts_knit$set(root.dir = here::here("content/start"))
 ```
 
-## Data preparation
+# Data preparation
 
 Now the positive mode and negative mode have been annotated respectively. We need to merge positive and negative mode data.
 
@@ -39,16 +39,16 @@ library(tidymass)
 library(tidyverse)
 ```
 
-### Load data
+## Load data
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("metabolite_annotation/object_pos2")
 load("metabolite_annotation/object_neg2")
 ```
 
-### Remove the features without annotations
+## Remove the features without annotations
 
-#### Positive mode
+## Positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_pos2 <- 
@@ -62,7 +62,7 @@ object_pos2 <-
 object_pos2
 ```
 
-#### Negative mode
+## Negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_neg2 <- 
@@ -76,7 +76,7 @@ object_neg2 <-
 object_neg2
 ```
 
-### Merge data
+## Merge data
 
 We need to merge positive and negative mode data as one `mass_dataset` class.
 
@@ -103,7 +103,7 @@ merge_mass_dataset(x = object_pos2,
 object
 ```
 
-## Trace processing information of object
+# Trace processing information of object
 
 Then we can use the `report_parameters()` function to trace processing information of object.
 
@@ -121,7 +121,7 @@ A html format file named as `parameter_report.html` will be generated.
 
 ![](figures/fig1.png)
 
-## Remove redundant metabolites
+# Remove redundant metabolites
 
 Remove the redundant annotated metabolites bases on `Level` and score.
 
@@ -145,7 +145,7 @@ object <-
   slice_head(n = 1)
 ```
 
-## Differential expression metabolites
+# Differential expression metabolites
 
 Calculate the fold changes.
 
@@ -195,7 +195,7 @@ volcano_plot(object = object,
   scale_size_continuous(range = c(0.5, 5))
 ```
 
-## Output result
+# Output result
 
 Output the differential expression metabolites.
 
@@ -216,7 +216,7 @@ object_final <- object
 save(object_final, file = "statistical_analysis/object_final")
 ```
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 sessionInfo()

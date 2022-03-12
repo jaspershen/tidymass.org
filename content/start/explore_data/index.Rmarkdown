@@ -13,7 +13,7 @@ knitr::opts_knit$set(root.dir = here::here("content/start"))
 ```
 
 
-## Data preparation
+# Data preparation
 
 After the [`raw data processing`](https://tidymass.github.io/tidymass/articles/raw_data_processing.html), peak tables for positive and negative mode have been generated. 
 
@@ -24,7 +24,7 @@ library(tidymass)
 library(tidyverse)
 ```
 
-#### Positive mode
+## Positive mode
 
 Load `object`.
 
@@ -148,7 +148,7 @@ show_variable_missing_values(
   scale_size_continuous(range = c(0.01, 1))
 ```
 
-#### Negative mode
+## Negative mode
 
 Load `object`.
 
@@ -271,11 +271,11 @@ show_variable_missing_values(object = object_neg,
   scale_size_continuous(range = c(0.01, 1))
 ```
 
-## Conclusion
+# Conclusion
 
 So from those exploration, we have a brief summary of our data. Next, we will use [`masscleaner` pacakge](https://tidymass.github.io/masscleaner/) to do the data cleaning of data.
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 sessionInfo()

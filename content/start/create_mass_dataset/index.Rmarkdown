@@ -23,7 +23,7 @@ vignette: >
 ```{r, include = FALSE, echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "##>",
+  comment = "#>",
   warning = FALSE,
   message = TRUE,
   out.width = "100%"
@@ -37,7 +37,7 @@ source(here::here("content/start/common.R"))
 
 If you don't want to use the `massprocesser` for raw data processing, you can absolutely use other tools (mzMine or MS-DIAL). Then you can just use the functions from `massdataset` convert results from them to `mass_dataset` class.
 
-## mzMine feature table to `mass_dataset` class
+# mzMine feature table to `mass_dataset` class
 
 
 We can also directory convert feature table from [mzMine](http://mzmine.github.io/) to `mass_dataset` class.
@@ -62,7 +62,7 @@ object =
 object
 ```
 
-## MS-DIAL feature table to `mass_dataset` class
+# MS-DIAL feature table to `mass_dataset` class
 
 We can also directory convert feature table from [MS-DIAL](http://prime.psc.riken.jp/compms/msdial/main.html) to `mass_dataset` class.
 
@@ -86,7 +86,7 @@ object =
 object
 ```
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 sessionInfo()

@@ -4,7 +4,7 @@ weight: 8
 categories: [tidymass_usage]
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
-date: "Created on 2021-12-04 and updated on 2022-03-10"
+date: "Created on 2021-12-04 and updated on 2022-03-11"
 output:
   html_document:
     number_sections: true
@@ -24,7 +24,7 @@ vignette: >
 
 
 
-## Data preparation
+# Data preparation
 
 Download the demo data and [refer this article](https://tidymass.github.io/tidymass/articles/demo_data.html).
 
@@ -32,11 +32,11 @@ We have positive and negative mode. For each mode, we have `control`, `case` and
 
 ![](figures/fig1.png)
 
-### Positive mode
+## Positive mode
 
 `massprocesser` package is used to do the raw data processing. Please refer this [website](file:///Users/xiaotaoshen/tidymass/massprocesser/docs/index.html).
 
-#### Code
+## Code
 
 The code used to do raw data processing.
 
@@ -84,7 +84,7 @@ process_data(
 )
 ```
 
-#### Results
+## Results
 
 All the results will be placed in the folder `mzxml_ms1_data/POS/Result`. More information can be found [here](https://tidymass.github.io/massprocesser/articles/raw_data_processing.html).
 
@@ -124,7 +124,7 @@ You can use the `plot_adjusted_rt()` function to get the interactive plot.
 
 ```r
 load("mzxml_ms1_data/POS/Result/intermediate_data/xdata2")
-####set the group_for_figure if you want to show specific groups. And set it as "all" if you want to show all samples.
+##set the group_for_figure if you want to show specific groups. And set it as "all" if you want to show all samples.
 plot = 
 massprocesser::plot_adjusted_rt(object = xdata2, 
                  group_for_figure = "QC", 
@@ -132,11 +132,11 @@ massprocesser::plot_adjusted_rt(object = xdata2,
 plot
 ```
 
-### Negative mode
+## Negative mode
 
 The processing of negative mode is same with positive mode data.
 
-### Code
+## Code
 
 Same with positive mode, change `polarity` to `negative`.
 
@@ -156,7 +156,7 @@ massprocesser::process_data(
 )
 ```
 
-### Results
+## Results
 
 Same with positive mode.
 
@@ -185,7 +185,7 @@ object
 
 We can see that there are 8,804 metabolic features in negative mode.
 
-## Session information
+# Session information
 
 
 ```r

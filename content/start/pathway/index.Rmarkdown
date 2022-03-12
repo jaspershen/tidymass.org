@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 knitr::opts_knit$set(root.dir = here::here("content/start"))
 ```
 
-## Data preparation
+# Data preparation
 
 Load the differential expressional metabolites.
 
@@ -47,7 +47,7 @@ load("statistical_analysis/object_final")
 object_final
 ```
 
-## Pathway enrichment
+# Pathway enrichment
 
 All the results will be placed in a folder named as `pathway_enrichment`.
 
@@ -69,7 +69,7 @@ head(diff_metabolites)
 ```
 
 
-### Load `KEGG` human pathway database
+## Load `KEGG` human pathway database
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 data("kegg_hsa_pathway", package = "metpath")
@@ -82,7 +82,7 @@ get_pathway_class(kegg_hsa_pathway)
 Remove the disease pathways:
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
-##get the class of pathways
+#get the class of pathways
 pathway_class = 
   metpath::pathway_class(kegg_hsa_pathway)
 head(pathway_class)
@@ -133,7 +133,7 @@ Check the result:
 result
 ```
 
-## Plot to show pathway enrichment result
+# Plot to show pathway enrichment result
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 enrich_bar_plot(object = result,
@@ -154,7 +154,7 @@ enrich_network(
 )
 ```
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 sessionInfo()

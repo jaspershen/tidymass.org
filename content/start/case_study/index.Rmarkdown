@@ -36,29 +36,29 @@ knitr::opts_chunk$set(
 knitr::opts_knit$set(root.dir = here::here("content/start"))
 ```
 
-## Introduction
+# Introduction
 
 Data introduction. We have RPLC (positive and negative mode), HILIC (positive and negative mode). More information can be found here.
 
 [Sex Differences in Colon Cancer Metabolism Reveal A Novel Subphenotype](https://www.nature.com/articles/s41598-020-61851-0)
 
-## Download data
+# Download data
 
 Mass spectrometry raw data (mzXML) for the case study in this paper is accessible on `MetaboLights` with MTBLS1122 (HILIC positive), MTBLS1124 (HILIC negative), MTBLS1122 (RPLC positive) and MTBLS1130 (RPLC negative). The MS2 data (mgf) and processed data (“mass_dataset” class) from the `massProcesser` package are available on the tidyMass project website (https://tidymass.github.io/case_study_data/).
 
 > Note: In some steps, we just skip them to save time, try to change `eval=FALSE` to `eval=TRUE` so you can run this code chunk. For the annotation step, because we can't share the in-house database, so we just provide the `mass_dataset` class after annotation. We apologize for the inconvenience.
 
-## Data preparation
+# Data preparation
 
 Please download all the data and [code](https://drive.google.com/file/d/1vop-hU1J5Ykw7ta0dOb6eAtQjA0R3iSx/view?usp=sharing), and put them in one folder named as `case_study`.
 
 ![](figures/fig1.png)
 
-## Install packages
+# Install packages
 
 Please install the pacakge we need in this analysis.
 
-### `tidymass`
+## `tidymass`
 
 Please refer [this document](https://tidymass.github.io/tidymass/articles/tidymass_install.html).
 
@@ -72,7 +72,7 @@ if(!require(remotes)){
 }
 ```
 
-### `tidyverse`
+## `tidyverse`
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE, results = 'hide'}
 if(!require(tidyverse)){
@@ -80,7 +80,7 @@ if(!require(tidyverse)){
 }
 ```
 
-### Other packages
+## Other packages
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE, results = 'hide'}
 if(!require(BiocManager)){
@@ -108,7 +108,7 @@ if(!require(shadowtext)){
 }
 ```
 
-## Raw data processing
+# Raw data processing
 
 `massprocesser` package is used to do the raw data processing. Please refer this [website](file:///Users/xiaotaoshen/tidymass/massprocesser/docs/index.html) for more information.
 
@@ -117,7 +117,7 @@ library(tidymass)
 library(tidyverse)
 ```
 
-### RPLC positive mode
+## RPLC positive mode
 
 The code used to do raw data processing.
 
@@ -162,8 +162,8 @@ We can use the `plot_adjusted_rt()` function to get the interactive plot.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("mzxml_ms1_data/RPLC/POS/Result/intermediate_data/xdata2")
-####set the group_for_figure if you want to show specific groups. 
-####And set it as "all" if you want to show all samples.
+##set the group_for_figure if you want to show specific groups. 
+##And set it as "all" if you want to show all samples.
 plot <-
 massprocesser::plot_adjusted_rt(object = xdata2, 
                  group_for_figure = "QC", 
@@ -176,7 +176,7 @@ rm(list = "xdata2")
 gc()
 ```
 
-### RPLC negative mode
+## RPLC negative mode
 
 The processing of negative mode is same with positive mode data.
 
@@ -207,7 +207,7 @@ dim(object)
 
 We can see that there are 4,685 metabolic features in negative mode.
 
-### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 process_data(
@@ -224,7 +224,7 @@ process_data(
 )
 ```
 
-### HILIC negative mode
+## HILIC negative mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 process_data(
@@ -241,11 +241,11 @@ process_data(
 )
 ```
 
-## Explore data
+# Explore data
 
 After the [`raw data processing`](https://tidymass.github.io/tidymass/articles/raw_data_processing.html), peak tables for positive and negative mode will be generated.
 
-### RPLC positive mode
+## RPLC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("mzxml_ms1_data/RPLC/POS/Result/object")
@@ -360,7 +360,7 @@ show_variable_missing_values(object = object_rplc_pos,
   scale_size_continuous(range = c(0.01, 1))
 ```
 
-### RPLC Negative mode
+## RPLC Negative mode
 
 Load `object`.
 
@@ -417,7 +417,7 @@ We can use the figure to show the missing value information.
 show_missing_values(object = object_rplc_neg, show_column_names = FALSE, percentage = TRUE)
 ```
 
-### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("mzxml_ms1_data/HILIC/POS/Result/object")
@@ -464,7 +464,7 @@ object_hilic_pos %>%
   scale_size_continuous(range = c(0.01, 2))
 ```
 
-### HILIC Negative mode
+## HILIC Negative mode
 
 Load `object`.
 
@@ -513,9 +513,9 @@ object_hilic_neg %>%
   scale_size_continuous(range = c(0.01, 2))
 ```
 
-## Data cleaning
+# Data cleaning
 
-### Data quality assessment before data cleaning
+## Data quality assessment before data cleaning
 
 Change batch to character.
 
@@ -556,7 +556,7 @@ Here, we can use the `massqc` package to [assess the data quality](https://tidym
 
 We can just use the `massqc_report()` function to get a html format quality assessment report.
 
-#### RPLC Positive mode
+## RPLC Positive mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 massqc::massqc_report(object = object_rplc_pos, 
@@ -569,32 +569,32 @@ The html report is below:
 
 ![](figures/fig2.png)
 
-#### RPLC negative mode.
+## RPLC negative mode.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 massqc::massqc_report(object = object_rplc_neg, 
                       path = "data_cleaning/RPLC/NEG/data_quality_before_data_cleaning")
 ```
 
-#### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 massqc::massqc_report(object = object_hilic_pos, 
                       path = "data_cleaning/HILIC/POS/data_quality_before_data_cleaning")
 ```
 
-#### HILIC negative mode
+## HILIC negative mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 massqc::massqc_report(object = object_hilic_neg, 
                       path = "data_cleaning/HILIC/NEG/data_quality_before_data_cleaning")
 ```
 
-### Remove noisy metabolic features
+## Remove noisy metabolic features
 
 Remove variables which have MVs in more than 20% QC samples and in at lest 50% samples in control group or case group.
 
-#### RPLC positive mode
+## RPLC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_pos %>% 
@@ -654,7 +654,7 @@ object_rplc_pos
 
 Only 6,132 variables left.
 
-#### RPLC negative mode
+## RPLC negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 qc_id <-
@@ -700,7 +700,7 @@ object_rplc_neg
 
 2,719 features left.
 
-#### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 qc_id <-
@@ -744,7 +744,7 @@ object_hilic_pos <-
 object_rplc_neg
 ```
 
-#### HILIC negative mode
+## HILIC negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 qc_id <-
@@ -788,16 +788,16 @@ object_hilic_neg <-
 object_hilic_neg
 ```
 
-### Filter outlier samples
+## Filter outlier samples
 
 We can use the `detect_outlier()` to find the outlier samples.
 
 More information about how to detect outlier samples can be found [here](https://privefl.github.io/blog/detecting-outlier-samples-in-pca/).
 
-#### RPLC positive mode
+## RPLC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
-##change class to subject
+#change class to subject
 object_rplc_pos <-
   object_rplc_pos %>%
   activate_mass_dataset(what = "sample_info") %>%
@@ -832,10 +832,10 @@ outlier_table %>%
 
 Here, we don't remove outlier samples.
 
-#### RPLC negative mode
+## RPLC negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
-##change class to subject
+#change class to subject
 object_rplc_neg <-
   object_rplc_neg %>%
   activate_mass_dataset(what = "sample_info") %>%
@@ -856,10 +856,10 @@ outlier_samples <-
 outlier_samples
 ```
 
-#### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
-###change class to subject
+##change class to subject
 object_hilic_pos <-
   object_hilic_pos %>%
   activate_mass_dataset(what = "sample_info") %>%
@@ -880,10 +880,10 @@ outlier_samples <-
 outlier_samples
 ```
 
-#### HILIC negative mode
+## HILIC negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
-##change class to subject
+#change class to subject
 object_hilic_neg <-
   object_hilic_neg %>%
   activate_mass_dataset(what = "sample_info") %>%
@@ -904,7 +904,7 @@ outlier_samples <-
 outlier_samples
 ```
 
-### Missing value imputation
+## Missing value imputation
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE, results = 'hide'}
 object_rplc_pos <- 
@@ -927,9 +927,9 @@ object_hilic_neg <-
   impute_mv(object = object_hilic_neg, method = "knn")
 ```
 
-### Data normalization and integration
+## Data normalization and integration
 
-#### RPLC positive mode
+## RPLC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("data_cleaning/RPLC/POS/object_rplc_pos")
@@ -949,7 +949,7 @@ Save it for subsequent analysis.
 save(object_rplc_pos2, file = "data_cleaning/RPLC/POS/object_rplc_pos2")
 ```
 
-#### RPLC negative mode
+## RPLC negative mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("data_cleaning/RPLC/NEG/object_rplc_neg")
@@ -969,7 +969,7 @@ Save it for subsequent analysis.
 save(object_rplc_neg2, file = "data_cleaning/RPLC/NEG/object_rplc_neg2")
 ```
 
-#### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("data_cleaning/HILIC/POS/object_hilic_pos")
@@ -989,7 +989,7 @@ Save it for subsequent analysis.
 save(object_hilic_pos2, file = "data_cleaning/HILIC/POS/object_hilic_pos2")
 ```
 
-#### HILIC negative mode
+## HILIC negative mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("data_cleaning/HILIC/NEG/object_hilic_neg")
@@ -1023,7 +1023,7 @@ gc()
 ```
 
 
-### Data quality assessment after data cleaning
+## Data quality assessment after data cleaning
 
 We can use the `massqc_report()` function to get a html format quality assessment report.
 
@@ -1063,20 +1063,20 @@ massqc::massqc_report(object = object_hilic_neg2,
                       path = "data_cleaning/HILIC/NEG/data_quality_after_data_cleaning")
 ```
 
-## Metabolite annotation
+# Metabolite annotation
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 library(tidymass)
 library(tidyverse)
 ```
 
-### Add MS2 spectra to object
+## Add MS2 spectra to object
 
 Download the [MS2 data here](https://drive.google.com/file/d/1fR75tWp9jqp8vuWq85GvDGJ864Pb6AH2/view?usp=sharing).
 
 Place it in the `data` folder and uncompress it.
 
-#### RPLC positive mode
+## RPLC positive mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_pos2 <-
@@ -1090,7 +1090,7 @@ object_rplc_pos2 <-
   )
 ```
 
-#### RPLC negative mode
+## RPLC negative mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_neg2 <-
@@ -1104,7 +1104,7 @@ object_rplc_neg2 <-
   )
 ```
 
-#### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_hilic_pos2 <-
@@ -1118,7 +1118,7 @@ object_hilic_pos2 <-
   )
 ```
 
-#### HILIC negative mode
+## HILIC negative mode
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_hilic_neg2 <-
@@ -1142,11 +1142,11 @@ save(object_hilic_neg2, file = "data_cleaning/HILIC/NEG/object_hilic_neg2")
 ```
 
 
-### Metabolite annotation using `metid`
+## Metabolite annotation using `metid`
 
 Metabolite annotation is based on the [`metid` package](https://tidymass.github.io/metid/).
 
-#### Download database
+## Download database
 
 We need to download MS1 and MS2 database from `metid` [website](https://tidymass.github.io/metid/articles/public_databases.html).
 
@@ -1161,9 +1161,9 @@ load("data_cleaning/HILIC/POS/object_hilic_pos2")
 load("data_cleaning/HILIC/NEG/object_hilic_neg2")
 ```
 
-#### RPLC positive mode
+## RPLC positive mode
 
-##### Annotate features using in-house database.
+### Annotate features using in-house database.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("metabolite_annotation/database/RPLC.database")
@@ -1177,7 +1177,7 @@ object_rplc_pos3 <-
                                     polarity = "positive",
                                     database = RPLC.database)
 ```
-##### Annotate features using `snyder_database_rplc0.0.3`.
+### Annotate features using `snyder_database_rplc0.0.3`.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("metabolite_annotation/database/snyder_database_rplc0.0.3")
@@ -1198,9 +1198,9 @@ Save it for subsequent analysis.
 save(object_rplc_pos3, file = "metabolite_annotation/RPLC/POS/object_rplc_pos3")
 ```
 
-#### RPLC negative mode
+## RPLC negative mode
 
-##### Annotate features using in-house database.
+### Annotate features using in-house database.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_neg3 <- 
@@ -1210,7 +1210,7 @@ object_rplc_neg3 <-
                                     polarity = "negative",
                                     database = RPLC.database)
 ```
-##### Annotate features using `snyder_database_rplc0.0.3`.
+### Annotate features using `snyder_database_rplc0.0.3`.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_neg3 <- 
@@ -1228,9 +1228,9 @@ save(object_rplc_neg3, file = "metabolite_annotation/RPLC/NEG/object_rplc_neg3")
 ```
 
 
-#### HILIC positive mode
+## HILIC positive mode
 
-##### Annotate features using in-house database.
+### Annotate features using in-house database.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("metabolite_annotation/database/HILIC.database")
@@ -1244,7 +1244,7 @@ object_hilic_pos3 <-
                                     polarity = "positive",
                                     database = HILIC.database)
 ```
-##### Annotate features using `snyder_database_hilic0.0.3`.
+### Annotate features using `snyder_database_hilic0.0.3`.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("metabolite_annotation/database/snyder_database_hilic0.0.3")
@@ -1265,9 +1265,9 @@ Save it for subsequent analysis.
 save(object_hilic_pos3, file = "metabolite_annotation/HILIC/POS/object_hilic_pos3")
 ```
 
-#### HILIC negative mode
+## HILIC negative mode
 
-##### Annotate features using in-house database.
+### Annotate features using in-house database.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_hilic_neg3 <- 
@@ -1277,7 +1277,7 @@ object_hilic_neg3 <-
                                     polarity = "negative",
                                     database = HILIC.database)
 ```
-##### Annotate features using `snyder_database_hilic0.0.3`.
+### Annotate features using `snyder_database_hilic0.0.3`.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_hilic_neg3 <- 
@@ -1307,7 +1307,7 @@ gc()
 ```
 
 
-### Annotation result
+## Annotation result
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("metabolite_annotation/RPLC/POS/object_rplc_pos3")
@@ -1328,13 +1328,13 @@ variable_info_pos <-
 head(variable_info_pos)
 ```
 
-## Statistical analysis and pathway analysis
+# Statistical analysis and pathway analysis
 
-### Remove the features without annotations
+## Remove the features without annotations
 
 We only remain the annotations with level 2.
 
-##### RPLC positive mode
+### RPLC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_pos3 <- 
@@ -1344,7 +1344,7 @@ object_rplc_pos3 <-
   filter(Level == 1 | Level == 2)
 ```
 
-#### RPLC negative mode
+## RPLC negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_rplc_neg3 <- 
@@ -1354,7 +1354,7 @@ object_rplc_neg3 <-
   filter(Level == 1 | Level == 2)
 ```
 
-#### HILIC positive mode
+## HILIC positive mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_hilic_pos3 <- 
@@ -1364,7 +1364,7 @@ object_hilic_pos3 <-
   filter(Level == 1 | Level == 2)
 ```
 
-#### RPLC negative mode
+## RPLC negative mode
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object_hilic_neg3 <- 
@@ -1374,7 +1374,7 @@ object_hilic_neg3 <-
   filter(Level == 1 | Level == 2)
 ```
 
-### Merge data
+## Merge data
 
 We need to merge RPLC, HILIC positive and negative mode data as one `mass_dataset` class.
 
@@ -1446,7 +1446,7 @@ rm(
 gc()
 ```
 
-### Remove redundant metabolites
+## Remove redundant metabolites
 
 Remove the redundant annotated metabolites bases on `Level` and score.
 
@@ -1466,7 +1466,7 @@ Save it for subsequent analysis.
 save(object, file = "statistical_analysis/object")
 ```
 
-### Trace processing information of object
+## Trace processing information of object
 
 Then we can use the `report_parameters()` function to trace processing information of object.
 
@@ -1480,7 +1480,7 @@ A html format file named as `parameter_report.html` will be generated.
 
 ![](figures/fig3.png)
 
-### Clustering of all samples
+## Clustering of all samples
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 load("statistical_analysis/object")
@@ -1503,11 +1503,11 @@ massstat::Heatmap(matrix = temp_object,
                   top_annotation = h1)
 ```
 
-### Differential expression metabolites
+## Differential expression metabolites
 
 We want to see if the dysregulated metabolites and pathways are different in males and female cancer tissues.
 
-#### Calculate the fold changes.
+## Calculate the fold changes.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 femaleLCC <-
@@ -1571,7 +1571,7 @@ object <-
   dplyr::rename(fc_femalelcc_vs_femalecontrol = fc)
 ```
 
-#### Calculate p values
+## Calculate p values
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 object <-
@@ -1605,7 +1605,7 @@ object <-
          p_value_adjust_femalelcc_vs_femalecontrol = p_value_adjust)
 ```
 
-#### Volcano plot
+## Volcano plot
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 plot <- 
@@ -1661,7 +1661,7 @@ readr::write_csv(diff_metabolites_femalelcc_vs_femalecontrol,
                  file = "statistical_analysis/differential_metabolites.csv")
 ```
 
-#### Heatmap
+## Heatmap
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 temp_object <- 
@@ -1715,11 +1715,11 @@ rm(list = c("temp_object"))
 gc()
 ```
 
-#### Pathway enrichment analysis
+## Pathway enrichment analysis
 
 Next, we want to know what pathways are enriched for male and female LCC tumor, respectively.
 
-##### Load `KEGG` human pathway database
+### Load `KEGG` human pathway database
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 data("kegg_hsa_pathway", package = "metpath")
@@ -1747,7 +1747,7 @@ pathway_database <-
   kegg_hsa_pathway[remain_idx]
 ```
 
-##### Pathway enrichment
+### Pathway enrichment
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 kegg_id <-
@@ -1852,11 +1852,11 @@ rm(list = c("plot", "result_female", "result_male"))
 gc()
 ```
 
-## Correlation network analysis
+# Correlation network analysis
 
 Next, we want to know if the correlation network are different between male and female tumor tissues.
 
-### Female tumor
+## Female tumor
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 temp_object <- 
@@ -1908,7 +1908,7 @@ plot
 ggsave(plot, filename = "pathway_enrichment/female_cor_network.pdf", width = 7, height = 7)
 ```
 
-### Male tumor
+## Male tumor
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=TRUE, cache=TRUE}
 temp_object <- 
@@ -1957,7 +1957,7 @@ plot
 ggsave(plot, filename = "pathway_enrichment/male_cor_network.pdf", width = 7, height = 7)
 ```
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 sessionInfo()

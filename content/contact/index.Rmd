@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## If you have any quesitons, please contact me.
+# If you have any quesitons, please contact me.
 
 ---
 

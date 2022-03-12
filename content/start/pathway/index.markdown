@@ -21,7 +21,7 @@ vignette: >
 
 
 
-## Data preparation
+# Data preparation
 
 Load the differential expressional metabolites.
 
@@ -188,7 +188,7 @@ object_final
 #> 1 massdataset mutate_p_value() 2022-03-10 23:59:25
 ```
 
-## Pathway enrichment
+# Pathway enrichment
 
 All the results will be placed in a folder named as `pathway_enrichment`.
 
@@ -248,7 +248,7 @@ head(diff_metabolites)
 ```
 
 
-### Load `KEGG` human pathway database
+## Load `KEGG` human pathway database
 
 
 ```r
@@ -286,7 +286,7 @@ Remove the disease pathways:
 
 
 ```r
-##get the class of pathways
+#get the class of pathways
 pathway_class = 
   metpath::pathway_class(kegg_hsa_pathway)
 head(pathway_class)
@@ -403,7 +403,7 @@ result
 #> 1 metpath enrich_kegg() 2022-03-11 01:16:13
 ```
 
-## Plot to show pathway enrichment result
+# Plot to show pathway enrichment result
 
 
 ```r
@@ -433,7 +433,7 @@ enrich_network(
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-18-1.png" width="100%" />
 
-## Session information
+# Session information
 
 
 ```r

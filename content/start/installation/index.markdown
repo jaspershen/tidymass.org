@@ -3,7 +3,7 @@ title: "Install tidymass"
 weight: 1
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
-date: "Created on 2021-12-04 and updated on 2022-03-10"
+date: "Created on 2021-12-04 and updated on 2022-03-11"
 categories: [installation]
 ---
 
@@ -11,7 +11,7 @@ categories: [installation]
 
 
 
-## Update R version
+# Update R version
 
 `tidymass` require R version > 4.1. You can check your R version in your console:
 
@@ -22,9 +22,9 @@ version
 
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
-## Install `tidymass` from GitLab
+# Install `tidymass` from GitLab
 
-### Update `remotes`
+## Update `remotes`
 
 You can use the `remotes` package to install `tidymass`. 
 
@@ -35,7 +35,7 @@ Please update `remotes` first and then restart your r session.
 install.packages("remotes")
 ```
 
-### Install `tidymass`
+## Install `tidymass`
 
 Install `tidymass` by:
 
@@ -46,7 +46,7 @@ remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
 
 > During installing, it may ask you several times: "Would you like to update some pacakges?" Just press the `Enter` or `Retrun` key to skip updates.
 
-### Install tidymass packages one by one
+## Install tidymass packages one by one
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
@@ -62,9 +62,9 @@ remotes::install_gitlab("jaspershen/metid", dependencies = TRUE)
 remotes::install_gitlab("jaspershen/metpath", dependencies = TRUE)
 ```
 
-## Install `tidymass` from GitHub
+# Install `tidymass` from GitHub
 
-### Install `tidymass`
+## Install `tidymass`
 
 Then install `tidymass`:
 
@@ -110,7 +110,7 @@ GITHUB_PAT=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
 And then restart R session and try again.
 
 
-### Install tidymass packages one by one
+## Install tidymass packages one by one
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
@@ -127,11 +127,11 @@ remotes::install_github("tidymass/metpath", dependencies = TRUE)
 ```
 
 
-## Install `tidymass` from Gitee
+# Install `tidymass` from Gitee
 
 If you can't install pacakgs from GitHub and GitLab, please try install packags from Gitee.
 
-### Install `tidymass`
+## Install `tidymass`
 
 Then install `tidymass`:
 
@@ -140,7 +140,7 @@ Then install `tidymass`:
 remotes::install_git(url = "https://gitee.com/jaspershen/tidymass", dependencies = TRUE)
 ```
 
-### Install tidymass packages one by one.
+## Install tidymass packages one by one.
 
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
@@ -158,7 +158,7 @@ remotes::install_git(url = "https://gitee.com/jaspershen/metpath", dependencies 
 
 [Let me know if you have any questions](https://github.com/tidymass/tidymass/issues).
 
-## Frequently Asked Questions
+# Frequently Asked Questions
 
 1. Can not install dependent packages `raster` and `Cario`
 
@@ -197,7 +197,7 @@ Just try to restart R and install `affy`.
 BiocManager::install("affy")
 ```
 
-## Session information
+# Session information
 
 
 ```r

@@ -40,9 +40,9 @@ preserveTaxonomyNames = true
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.tableOfContents]
-    endLevel = 2
+    endLevel = 1
     ordered = false
-    startLevel = 2
+    startLevel = 1
   [markup.goldmark.renderer]
     unsafe = true
   [markup.highlight]

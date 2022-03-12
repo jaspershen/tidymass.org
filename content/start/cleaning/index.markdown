@@ -22,7 +22,7 @@ vignette: >
 
 
 
-## Data preparation
+# Data preparation
 
 We just use the dataset which are from [this step](https://tidymass.github.io/tidymass/articles/explore_data.html).
 
@@ -121,7 +121,7 @@ object_neg
 #> 1 massdataset      mutate() 2022-03-10 22:47:29
 ```
 
-## Data quality assessment before data cleaning
+# Data quality assessment before data cleaning
 
 Here, we can use the `massqc` package to [assess the data quality](https://tidymass.github.io/massqc/).
 
@@ -160,11 +160,11 @@ Negative mode:
 
 We can see that no matter in positive and negative mode, batch effect is serious.
 
-## Remove noisy metabolic features
+# Remove noisy metabolic features
 
 Remove variables which have MVs in more than 20% QC samples and in at lest 50% samples in control group or case group.
 
-### Positive mode
+## Positive mode
 
 
 ```r
@@ -266,7 +266,7 @@ object_pos
 
 Only 5,101 variables left.
 
-### Negative mode
+## Negative mode
 
 
 ```r
@@ -369,13 +369,13 @@ object_neg
 4104 features left.
 
 
-## Filter outlier samples
+# Filter outlier samples
 
 We can use the `detect_outlier()` to find the outlier samples.
 
 More information about how to detect outlier samples can be found [here](https://privefl.github.io/blog/detecting-outlier-samples-in-pca/).
 
-### Positive mode
+## Positive mode
 
 
 ```r
@@ -439,7 +439,7 @@ outlier_table %>%
 
 No outlier samples in positive mode.
 
-### Negative mode
+## Negative mode
 
 
 ```r
@@ -503,7 +503,7 @@ outlier_table %>%
 
 No outlier samples in negative mode.
 
-### Missing value imputation
+## Missing value imputation
 
 
 ```r
@@ -565,9 +565,9 @@ get_mv_number(object_neg)
 #> [1] 0
 ```
 
-### Data normalization and integration
+## Data normalization and integration
 
-### Positive mode
+## Positive mode
 
 
 ```r
@@ -588,7 +588,7 @@ object_pos2 %>%
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.svg" width="672" />
 
-### Negative mode
+## Negative mode
 
 
 ```r
@@ -617,7 +617,7 @@ save(object_pos2, file = "data_cleaning/POS/object_pos2")
 save(object_neg2, file = "data_cleaning/NEG/object_neg2")
 ```
 
-## Session information
+# Session information
 
 
 ```r

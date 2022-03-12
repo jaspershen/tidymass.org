@@ -35,7 +35,7 @@ knitr::opts_knit$set(root.dir = here::here("content/start"))
 source(here::here("content/start/common.R"))
 ```
 
-## Introduction
+# Introduction
 
 The demo data for tidymass is untargeted metabolomics by RPLC-QEplus (Thermo). 259 samples in total.
 
@@ -43,9 +43,9 @@ The demo data for tidymass is untargeted metabolomics by RPLC-QEplus (Thermo). 2
 
 * QC samples: 39
 
-## Download demo data
+# Download demo data
 
-#### 1. MS1 data (mzXML format)
+## 1. MS1 data (mzXML format)
 
 [Download link](https://drive.google.com/file/d/1KUk0-PA77zV3UJsuUTEuAK6462yze8mm/view?usp=sharing).
 
@@ -53,7 +53,7 @@ Download and uncompress it:
 
 ![](figures/fig1.png)
 
-#### 2. MS2 data (mgf format)
+## 2. MS2 data (mgf format)
 
 [Download link](https://drive.google.com/file/d/1_bj1AFQ1QV1ZfmnlZzbQ_4Nh6vVZ_RT6/view?usp=sharing)
 
@@ -61,7 +61,7 @@ Download and uncompress it:
 
 ![](figures/fig2.png)
 
-#### 3. Sample information
+## 3. Sample information
 
 * [Download link](https://drive.google.com/file/d/1yyJeOMUhuMSTmPWfzKuFTCRfZ3zdhO6q/view?usp=sharing)
 
@@ -69,7 +69,7 @@ Download and uncompress it:
 
 ![](figures/fig3.png)
 
-###### `sample_info_pos`
+### `sample_info_pos`
 
 `sample_info_pos` is like below:
 
@@ -83,7 +83,7 @@ kbl(sample_info_pos) %>%
   scroll_box(width = "100%", height = "600px")
 ```
 
-###### `sample_info_neg`
+### `sample_info_neg`
 
 `sample_info_neg` is like below:
 
@@ -98,7 +98,7 @@ kbl(sample_info_neg) %>%
   scroll_box(width = "100%", height = "600px")
 ```
 
-## Session information
+# Session information
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 sessionInfo()

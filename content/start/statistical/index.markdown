@@ -3,7 +3,7 @@ title: "Statistical analysis"
 weight: 12
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
-date: "Created on 2021-12-04 and updated on 2022-03-10"
+date: "Created on 2021-12-04 and updated on 2022-03-11"
 output:
   html_document:
     number_sections: true
@@ -21,7 +21,7 @@ vignette: >
 
 
 
-## Data preparation
+# Data preparation
 
 Now the positive mode and negative mode have been annotated respectively. We need to merge positive and negative mode data.
 
@@ -31,7 +31,7 @@ library(tidymass)
 library(tidyverse)
 ```
 
-### Load data
+## Load data
 
 
 ```r
@@ -39,9 +39,9 @@ load("metabolite_annotation/object_pos2")
 load("metabolite_annotation/object_neg2")
 ```
 
-### Remove the features without annotations
+## Remove the features without annotations
 
-#### Positive mode
+## Positive mode
 
 
 ```r
@@ -107,7 +107,7 @@ object_pos2
 #> 3   metid annotate_metabolites_mass_dataset() 2022-02-22 21:47:59
 ```
 
-#### Negative mode
+## Negative mode
 
 
 ```r
@@ -173,7 +173,7 @@ object_neg2
 #> 3   metid annotate_metabolites_mass_dataset() 2022-02-22 22:26:33
 ```
 
-### Merge data
+## Merge data
 
 We need to merge positive and negative mode data as one `mass_dataset` class.
 
@@ -300,7 +300,7 @@ object
 #> 1 massdataset merge_mass_dataset 2022-03-10 23:57:34
 ```
 
-## Trace processing information of object
+# Trace processing information of object
 
 Then we can use the `report_parameters()` function to trace processing information of object.
 
@@ -320,7 +320,7 @@ A html format file named as `parameter_report.html` will be generated.
 
 ![](figures/fig1.png)
 
-## Remove redundant metabolites
+# Remove redundant metabolites
 
 Remove the redundant annotated metabolites bases on `Level` and score.
 
@@ -346,7 +346,7 @@ object <-
   slice_head(n = 1)
 ```
 
-## Differential expression metabolites
+# Differential expression metabolites
 
 Calculate the fold changes.
 
@@ -406,7 +406,7 @@ volcano_plot(object = object,
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-1.png" width="100%" />
 
-## Output result
+# Output result
 
 Output the differential expression metabolites.
 
@@ -429,7 +429,7 @@ object_final <- object
 save(object_final, file = "statistical_analysis/object_final")
 ```
 
-## Session information
+# Session information
 
 
 ```r

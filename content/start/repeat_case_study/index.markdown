@@ -21,15 +21,15 @@ vignette: >
 
 
 
-## Introduction
+# Introduction
 
 You can use the docker image of case study to repeat all the analysis and results in tidymass manuscript.
 
-## Download and install docker
+# Download and install docker
 
 Please refer to the [official website](https://www.docker.com/get-started) to download and install docker. And then run docker.
 
-## Pull the tidymass-case-study image
+# Pull the tidymass-case-study image
 
 Open you terminal and then type code below:
 
@@ -37,7 +37,7 @@ Open you terminal and then type code below:
 docker pull jaspershen/tidymass-case-study:latest
 ```
 
-## Run tidymass-case-study docker image
+# Run tidymass-case-study docker image
 
 In you terminal, run the code below:
 
@@ -49,13 +49,13 @@ Then open the browser and visit <http://localhost:8787> to power on RStudio serv
 
 ![](figures/fig1.png)
 
-## Run case study code
+# Run case study code
 
 Open the `tidymass_case_study.Rmd`, and then click `Knit`.
 
 ![](figures/repeat_case_study.gif)
 
-## Session information
+# Session information
 
 
 ```r

@@ -30,7 +30,7 @@ vignette: >
 
 If you don't want to use the `massprocesser` for raw data processing, you can absolutely use other tools (mzMine or MS-DIAL). Then you can just use the functions from `massdataset` convert results from them to `mass_dataset` class.
 
-## mzMine feature table to `mass_dataset` class
+# mzMine feature table to `mass_dataset` class
 
 
 We can also directory convert feature table from [mzMine](http://mzmine.github.io/) to `mass_dataset` class.
@@ -903,7 +903,7 @@ object
 #> 1 massdataset convet_mzmine2mass_dataset() 2022-03-10 22:48:12
 ```
 
-## MS-DIAL feature table to `mass_dataset` class
+# MS-DIAL feature table to `mass_dataset` class
 
 We can also directory convert feature table from [MS-DIAL](http://prime.psc.riken.jp/compms/msdial/main.html) to `mass_dataset` class.
 
@@ -2696,7 +2696,7 @@ object
 #> 1 massdataset convert_msdial2mass_dataset() 2022-03-10 22:48:14
 ```
 
-## Session information
+# Session information
 
 
 ```r

@@ -26,7 +26,7 @@ vignette: >
 
 You can build your own docker image, which contains all your `code`, `data` and `analysis environment`, which is more efficient for reproducible analysis.
 
-## Create `dockerfile`
+# Create `dockerfile`
 
 Create a `dockerfile` without extension. And then open and modify it.
 
@@ -53,7 +53,7 @@ RUN R -e 'install.packages("ggraph")'
 
 And you also need to copy your data to the image use the `COPY`.
 
-### Build image
+## Build image
 
 In the `terminal`, use below code to build the image.
 
@@ -63,7 +63,7 @@ docker build -t image-name -f Dockerfile .
 
 Change the `image-name`.
 
-## Use the `docker tag` command to give the `tidymass` image a new name
+# Use the `docker tag` command to give the `tidymass` image a new name
 
 We need to create a account on the docker hub (https://hub.docker.com/) and then use the next code to link the local image to our account.
 
@@ -71,7 +71,7 @@ We need to create a account on the docker hub (https://hub.docker.com/) and then
 docker tag image-name your-account/image-name:latest
 ```
 
-## Push image to docker hub
+# Push image to docker hub
 
 ```
 docker push your-account/image-name:latest
@@ -81,7 +81,7 @@ Then other people can download your image which contains your code, data and ana
 
 How to pull docker image and run it can [refer this document](https://tidymass.github.io/tidymass/articles/docker.html).
 
-## **Session information**
+# **Session information**
 
 
 

@@ -10,7 +10,7 @@ date: "Created on 2021-12-04 and updated on 2022-03-11"
 
 
 
-## Data preparation
+# Data preparation
 
 After the [`raw data processing`](https://tidymass.github.io/tidymass/articles/raw_data_processing.html), peak tables for positive and negative mode have been generated. 
 
@@ -63,7 +63,7 @@ library(tidyverse)
 #> x purrr::set_names()       masks magrittr::set_names()
 ```
 
-#### Positive mode
+## Positive mode
 
 Load `object`.
 
@@ -289,7 +289,7 @@ show_variable_missing_values(
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.svg" width="672" />
 
-#### Negative mode
+## Negative mode
 
 Load `object`.
 
@@ -514,11 +514,11 @@ show_variable_missing_values(object = object_neg,
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
 
-## Conclusion
+# Conclusion
 
 So from those exploration, we have a brief summary of our data. Next, we will use [`masscleaner` pacakge](https://tidymass.github.io/masscleaner/) to do the data cleaning of data.
 
-## Session information
+# Session information
 
 
 ```r

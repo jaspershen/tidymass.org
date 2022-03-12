@@ -3,7 +3,7 @@ title: "Metabolite annotation"
 weight: 11
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
-date: "Created on 2021-12-04 and updated on 2022-03-10"
+date: "Created on 2021-12-04 and updated on 2022-03-11"
 output:
   html_document:
     number_sections: true
@@ -23,7 +23,7 @@ vignette: >
 
 
 
-## Data preparation
+# Data preparation
 
 We just use the dataset which are from [previous step](https://tidymass.github.io/tidymass/articles/data_cleaning.html).
 
@@ -58,7 +58,7 @@ load("data_cleaning/POS/object_pos2")
 load("data_cleaning/NEG/object_neg2")
 ```
 
-## Add MS2 spectra data to `mass_dataset` class
+# Add MS2 spectra data to `mass_dataset` class
 
 Download the [MS2 data here](https://drive.google.com/file/d/1FY3x7q5i1g3oSLaVej__ZaZ4XSX-mWBQ/view?usp=sharing).
 
@@ -66,7 +66,7 @@ Uncompress it.
 
 ![](figures/fig1.png)
 
-### Positive mode
+## Positive mode
 
 
 ```r
@@ -152,7 +152,7 @@ extract_ms2_data(object_pos2)
 ```
 
 
-### Negative mode
+## Negative mode
 
 
 ```r
@@ -237,11 +237,11 @@ extract_ms2_data(object_neg2)
 #> mz71.012359619141rt52.3270968 mz73.02799987793rt74.779476 mz75.007308959961rt24.1557228 mz79.955728954783rt301.268466 mz79.955834350356rt235.127328...
 ```
 
-## Metabolite annotation
+# Metabolite annotation
 
 Metabolite annotation is based on the [`metid` package](https://tidymass.github.io/metid/).
 
-### Download database
+## Download database
 
 We need to download MS2 database from [`metid` website](https://tidymass.github.io/metid/articles/public_databases.html).
 
@@ -249,9 +249,9 @@ Here we download the `Michael Snyder RPLC databases`, `Orbitrap database` and `M
 
 ![](figures/fig2.png)
 
-### Positive mode
+## Positive mode
 
-#### Annotate features using `snyder_database_rplc0.0.3`.
+## Annotate features using `snyder_database_rplc0.0.3`.
 
 
 ```r
@@ -287,7 +287,7 @@ object_pos2 <-
                                     database = snyder_database_rplc0.0.3)
 ```
 
-#### Annotate features using `orbitrap_database0.0.3`.
+## Annotate features using `orbitrap_database0.0.3`.
 
 
 ```r
@@ -322,7 +322,7 @@ object_pos2 <-
                                     database = orbitrap_database0.0.3)
 ```
 
-#### Annotate features using `mona_database0.0.3`.
+## Annotate features using `mona_database0.0.3`.
 
 
 ```r
@@ -357,9 +357,9 @@ object_pos2 <-
                                     database = mona_database0.0.3)
 ```
 
-### Negative mode
+## Negative mode
 
-#### Annotate features using `snyder_database_rplc0.0.3`.
+## Annotate features using `snyder_database_rplc0.0.3`.
 
 
 ```r
@@ -371,7 +371,7 @@ object_neg2 <-
                                     database = snyder_database_rplc0.0.3)
 ```
 
-#### Annotate features using `orbitrap_database0.0.3`.
+## Annotate features using `orbitrap_database0.0.3`.
 
 
 ```r
@@ -382,7 +382,7 @@ object_neg2 <-
                                     database = orbitrap_database0.0.3)
 ```
 
-#### Annotate features using `mona_database0.0.3`.
+## Annotate features using `mona_database0.0.3`.
 
 
 ```r
@@ -395,7 +395,7 @@ object_neg2 <-
 
 
 
-### Annotation result
+## Annotation result
 
 The annotation result will assign into `mass_dataset` class as the `annotation_table` slot.
 
@@ -561,7 +561,7 @@ save(object_pos2, file = "metabolite_annotation/object_pos2")
 save(object_neg2, file = "metabolite_annotation/object_neg2")
 ```
 
-## Session information
+# Session information
 
 
 ```r
