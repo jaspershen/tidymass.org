@@ -15,35 +15,9 @@ version
 
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
-## Uninstall `tidyTools` and `metID`
+## Install `tidymass` from `GitLab`
 
-If you have installed `tinyTools` or `metID`, please uninstall them.
-
-`tinyTools` has been renamed as `tinytools` and `metID` has been renamed as `metid`. So please uninstall them before you install `tidymass`. **And don't use them any more.**
-
-1. detach them by:
-
-
-```r
-detach("package:tinyTools")
-detach("package:metID")
-```
-
-2. Remove them by:
-
-
-```r
-remove.packages(pkgs = "tinyTools")
-remove.packages(pkgs = "metID")
-```
-
-3. Restart your R session. 
-
-> If there are errors, ignore them.
-
-## Install `tidymass` from GitLab
-
-### Update `remotes`
+### Update `remotes` pacakge
 
 You can use the `remotes` package to install `tidymass`. 
 
@@ -82,7 +56,6 @@ remotes::install_gitlab("jaspershen/massstat", dependencies = TRUE)
 remotes::install_gitlab("jaspershen/metid", dependencies = TRUE)
 remotes::install_gitlab("jaspershen/metpath", dependencies = TRUE)
 ```
-
 
 ## Install `tidymass` from GitHub
 
@@ -406,8 +379,8 @@ sessionInfo()
 ## [133] tools_4.1.2                 parallel_4.1.2             
 ## [135] circlize_0.4.14             rstudioapi_0.13            
 ## [137] MsCoreUtils_1.6.0           foreach_1.5.2              
-## [139] foreign_0.8-82              masscleaner_0.99.7         
-## [141] gridExtra_2.3               masstools_0.99.5           
+## [139] foreign_0.8-82              masscleaner_0.99.8         
+## [141] gridExtra_2.3               masstools_0.99.9           
 ## [143] farver_2.1.0                mzID_1.32.0                
 ## [145] ggraph_2.0.5                rvcheck_0.2.1              
 ## [147] digest_0.6.29               BiocManager_1.30.16        
@@ -418,7 +391,7 @@ sessionInfo()
 ## [157] rvest_1.0.2                 XML_3.99-0.8               
 ## [159] fs_1.5.2                    IRanges_2.28.0             
 ## [161] splines_4.1.2               yulab.utils_0.0.4          
-## [163] massdataset_0.99.20         graphlayouts_0.8.0         
+## [163] massdataset_0.99.25         graphlayouts_0.8.0         
 ## [165] ggplotify_0.1.0             plotly_4.10.0              
 ## [167] fit.models_0.64             jsonlite_1.7.3             
 ## [169] tidygraph_1.2.0             corpcor_1.6.10             
@@ -430,7 +403,7 @@ sessionInfo()
 ## [181] pcaPP_1.9-74                mvtnorm_1.1-3              
 ## [183] furrr_0.2.3                 utf8_1.2.2                 
 ## [185] lattice_0.20-45             bslib_0.3.1                
-## [187] tibble_3.1.6                massstat_0.99.13           
+## [187] tibble_3.1.6                massstat_0.99.15           
 ## [189] ggfortify_0.4.14            zip_2.2.0                  
 ## [191] openxlsx_4.2.5              Rttf2pt1_1.3.9             
 ## [193] survival_3.2-13             limma_3.50.0               

@@ -3,7 +3,7 @@ title: "Repeat case study by docker"
 weight: 17
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
-date: "Created on 2022-03-07 and updated on 2022-03-11"
+date: "Created on 2022-03-07 and updated on 2022-03-21"
 output:
   html_document:
     number_sections: true
@@ -23,23 +23,33 @@ vignette: >
 
 # Introduction
 
-You can use the docker image of case study to repeat all the analysis and results in tidymass manuscript.
+You can use the docker image of case study to repeat all the analysis and results in the `tidymass` manuscript.
 
-# Download and install docker
+The link of the docker image: [https://hub.docker.com/r/jaspershen/tidymass-case-study](https://hub.docker.com/r/jaspershen/tidymass-case-study) 
+
+# Download and install `docker`
 
 Please refer to the [official website](https://www.docker.com/get-started) to download and install docker. And then run docker.
 
-# Pull the tidymass-case-study image
+1. If you are using Mac, see [here](https://docs.docker.com/desktop/mac/install/).
 
-Open you terminal and then type code below:
+2. If you are using Windows, see [here](https://docs.docker.com/desktop/windows/install/).
+
+3. If you are using Linux, see [here](https://docs.docker.com/engine/install/ubuntu/).
+
+![](figures/fig2.png)
+
+# Pull the `tidymass-case-study` image
+
+Open your `terminal` and then type the code below:
 
 ```
 docker pull jaspershen/tidymass-case-study:latest
 ```
 
-# Run tidymass-case-study docker image
+# Run `tidymass-case-study` docker image
 
-In you terminal, run the code below:
+In your terminal, run the code below:
 
 ```
 docker run -e PASSWORD=tidymass -p 8787:8787 jaspershen/tidymass-case-study:latest

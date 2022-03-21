@@ -14,9 +14,9 @@ version
 
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
-## Install `tidymass` from GitLab
+## Install `tidymass` from `GitLab`
 
-### Update `remotes`
+### Update `remotes` pacakge
 
 You can use the `remotes` package to install `tidymass`. 
 
@@ -52,7 +52,6 @@ remotes::install_gitlab("jaspershen/massstat", dependencies = TRUE)
 remotes::install_gitlab("jaspershen/metid", dependencies = TRUE)
 remotes::install_gitlab("jaspershen/metpath", dependencies = TRUE)
 ```
-
 
 ## Install `tidymass` from GitHub
 
