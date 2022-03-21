@@ -14,30 +14,6 @@ version
 
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
-## Uninstall `tidyTools` and `metID`
-
-If you have installed `tinyTools` or `metID`, please uninstall them.
-
-`tinyTools` has been renamed as `tinytools` and `metID` has been renamed as `metid`. So please uninstall them before you install `tidymass`. **And don't use them any more.**
-
-1. detach them by:
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-detach("package:tinyTools")
-detach("package:metID")
-```
-
-2. Remove them by:
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remove.packages(pkgs = "tinyTools")
-remove.packages(pkgs = "metID")
-```
-
-3. Restart your R session. 
-
-> If there are errors, ignore them.
-
 ## Install `tidymass` from GitLab
 
 ### Update `remotes`
