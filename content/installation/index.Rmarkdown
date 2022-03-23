@@ -4,14 +4,21 @@ title: "Install tidymass"
 
 # Install `tidymass` packages
 
+> Please make sure your internet is connected and stable. 
+
+And if you have any problems during the installation, please feel free to send email to us (shenxt@stanford.edu) or contact me via [other social medias](https://www.tidymass.org/contact/).
+
 ## Update R version
 
-`tidymass` require R version > 4.1. You can check your R version in your console:
+`tidymass` require R version > 4.1. 
+
+You can check your R version in your console:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 version
 ```
 
+![](figures/fig1.png)
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
 ## Install `tidymass` from `GitLab`
@@ -34,9 +41,11 @@ Install `tidymass` by:
 remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
 ```
 
-> During installing, it may ask you several times: "Would you like to uodate some pacakges?" Just Enter the `Enter` or `Retrun` key to skip updates.
+> During installing, it may ask you several times: "Would you like to update some pacakges?" Just Enter the `Enter` or `Retrun` key to skip updates.
 
-![](figures/Screen-Shot 9.png)
+![](figures/fig2.png)
+
+> If you have a completely fresh R enivorment, it needs to install all the dependent packages, so it will take around 30 mins to finish the installation of `tidymass`. In my Mac pro (macOS Monterey, 2.3 GHz 8-core intel core i9, 16GB 2667 MHz DDR4), it takes about 30 mins to finish the installation in a completely fresh R enivorment.
 
 ### Install `tidymass` packages one by one
 
@@ -53,11 +62,9 @@ remotes::install_gitlab("jaspershen/metid", dependencies = TRUE)
 remotes::install_gitlab("jaspershen/metpath", dependencies = TRUE)
 ```
 
-## Install `tidymass` from GitHub
+## Install `tidymass` from `GitHub`
 
 ### Install `tidymass`
-
-Then install `tidymass`:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 remotes::install_github("tidymass/tidymass", dependencies = TRUE)
@@ -81,7 +88,7 @@ usethis::create_github_token()
 
 It will open a page in browser, and create a "New personal access token" and copy it.
 
-![](figures/Screen-Shot-2021-12-24-at-9.28.18-PM.png)
+![](figures/fig3.png)
 
 2. Then type this code:
 
@@ -115,13 +122,11 @@ remotes::install_github("tidymass/metpath", dependencies = TRUE)
 ```
 
 
-## Install `tidymass` from Gitee
+## Install `tidymass` from `Gitee`
 
-If you can't install pacakgs from GitHub and GitLab, please try install packags from Gitee.
+If you can't install pacakgs from `GitHub` and `GitLab`, please try install packages from `Gitee`.
 
 ### Install `tidymass`
-
-Then install `tidymass`:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 remotes::install_git(url = "https://gitee.com/jaspershen/tidymass", dependencies = TRUE)
@@ -152,7 +157,7 @@ You can use the `tidymass` to check the version of all packages and update them.
 
 If you want to check if there are updates for `tidymass` and packages in it. Just check it like this.
 
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 tidymass::check_tidymass_version()
 ```
 
@@ -161,10 +166,11 @@ tidymass::check_tidymass_version()
 The `update_tidymass()` function can be used to update `tidymass` and packages in it.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-tidymass::update_tidymass(from = "github")
+tidymass::update_tidymass(from = "gitlab")
 ```
 
-> If the `from = "github"` doesn't work, try set it as `from = "gitlab"` or `from = "gitee"`.
+> If the `from = "gitlab"` doesn't work, try set it as `from = "github"` or `from = "gitee"`.
+
 
 # Install docker version of `tidymass`
 
@@ -172,12 +178,11 @@ Docker is a set of platform as a service (PaaS) products that use OS-level virtu
 
 We provide a docker version of `tidymass`, all the packages in `tidymass` and the dependent packages have been installed.
 
-
 ## Install docker
 
 Please refer to the [offical website](https://www.docker.com/get-started) to download and install docker. And then run docker.
 
-![](figures/Screen-Shot 4.png)
+![](figures/fig4.png)
 
 ## Pull the `tidymass` image
 
@@ -189,7 +194,7 @@ docker pull jaspershen/tidymass:latest
 
 ## Run `tidymass` docker image
 
-In you terminal, run the code below:
+In your terminal, run the code below:
 
 ```
 docker run -e PASSWORD=tidymass -p 8787:8787 jaspershen/tidymass:latest
@@ -205,10 +210,10 @@ docker run -e PASSWORD=tidymass -v ~/Desktop:/home/rstudio/ -p 8787:8787 jaspers
 
 Then open the browser and visit http://localhost:8787 to power on RStudio server. The user name is `rstudio` and the password is `tidymass`.
 
-![](figures/Screen-Shot 5.png)
-![](figures/Screen-Shot 6.png)
+![](figures/fig5.png)
+![](figures/fig6.png)
 
-![](figures/Screen-Shot 7.png)
+![](figures/fig7.png)
 
 ![](figures/Untitled.gif)
 
@@ -235,7 +240,7 @@ RUN R -e 'install.packages("remotes")'
 RUN R -e "remotes::install_gitlab('jaspershen/tidymass')"
 ```
 
-If you want to install packages (for example ggraph) which are necessary for you analysis, please add a new line:
+If you want to install packages (for example `ggraph`) which are necessary for you analysis, please add a new line:
 
 ```
 RUN R -e 'install.packages("ggraph")'
