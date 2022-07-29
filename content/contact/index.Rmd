@@ -23,9 +23,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-# If you have any quesitons, please contact me.
+# Citation
+
+If you used `tidyMass` in your study, please cite the publication:
+
+Shen, X., Yan, H., Wang, C. et al. TidyMass an object-oriented reproducible analysis framework for LC–MS data. Nat Commun 13, 4365 (2022). https://doi.org/10.1038/s41467-022-32155-w
+
+Link: https://www.nature.com/articles/s41467-022-32155-w#citeas
 
 ---
+
+# Contact
+
+If you have any quesitons, please contact me.
+
 
 <i class="fab fa-weixin fa-lg"></i> [shenxt1990](https://www.shenxt.info/files/wechat_QR.jpg)
 
