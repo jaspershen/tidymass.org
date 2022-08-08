@@ -1,0 +1,649 @@
+---
+title: "Whole workflow using tidymass"
+weight: 14
+author:
+- name: Xiaotao Shen (https://www.shenxt.info/)
+date: "Created on 2022-02-18 and updated on 2022-08-07"
+output:
+  html_document:
+    number_sections: true
+    df_print: paged
+    toc: yes
+  pdf_document:
+    toc: no
+vignette: >
+  %\VignetteIndexEntry{whole workflow}
+  %\VignettePackage{tidymass}
+  % \VignetteEngine{knitr::rmarkdown}
+  % \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+<div id="introduction-to-metabolomics-data" class="section level1">
+<h1>Introduction to Metabolomics Data</h1>
+<p>The Danish Project Project studies metabolic changes during human pregnancy and if these altered metabolites could be used to predict preterm.</p>
+<div id="referenced-research" class="section level2">
+<h2>Referenced research</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/32589958/">Liang L, Rasmussen MH, Piening B, Shen X, Chen S, Röst H, Snyder JK, Tibshirani R, Skotte L, Lee NC, Contrepois K, Feenstra B, Zackriah H, Snyder M, Melbye M. Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women. Cell. 2020 Jun 25;181(7):1680-1692.e15. doi: 10.1016/j.cell.2020.05.002.</a></li>
+</ol>
+</div>
+</div>
+<div id="introduction-to-tidymass-project" class="section level1">
+<h1>Introduction to <code>tidyMass</code> project</h1>
+<p>TidyMass is an ecosystem of R packages that share an underlying design philosophy, grammar, and data structure, which provides a comprehensive, reproducible, and object-oriented computational framework. The modular architecture makes tidyMass a highly flexible and extensible tool, which other users can improve and integrate with other tools to customize their own pipeline.</p>
+<p>More information about tidyMass could be found here: <a href="https://www.tidymass.org/">tidymass.org</a>.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/35902589/">Shen X, Yan H, Wang C, Gao P, Johnson CH, Snyder MP. TidyMass an object-oriented reproducible analysis framework for LC-MS data. Nat Commun. 2022 Jul 28;13(1):4365. doi: 10.1038/s41467-022-32155-w.</a></li>
+</ol>
+<p>Hopefully, at the end of this module, you will have a better sense of the metabolomics data analysis procedure and how to use R for reproducible data processing and analysis</p>
+</div>
+<div id="data-preparation" class="section level1">
+<h1>Data preparation</h1>
+<p>Download the demo data and uncompress it.</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://drive.google.com/file/d/1ZVijIzq5kmUjouBS2P4UgNfTgoDYgGyy/view?usp=sharing">Google drive link</a></p></li>
+<li><p>If you can use Google drive, <a href="https://pan.baidu.com/s/1MPJyC-WqA1-xXWV5Ilm27w?pwd=2022">download here</a>. (code 2022)</p></li>
+</ol>
+<p>The demo data contains RPLC positive mode, with 7 participants, and two samples for each participant (Trimester 1 (&lt; 10 weeks) and trimester 3 (&gt; 30 weeks)). So there are 14 samples in total.</p>
+<p><img src="figures/Screen-Shot.png" /></p>
+<ol style="list-style-type: decimal">
+<li><p><code>MS1</code>: MS1 is the folder contains the mzXML for 14 samples.</p></li>
+<li><p><code>MS2</code>: MS2 is the folder contains the mgf for QC samples (MS2 spectra).</p></li>
+<li><p><code>sample_info.xlsx</code>: it is the metadata for samples.</p></li>
+</ol>
+<p><img src="figures/Screen-Shot%201.png" /></p>
+<hr />
+</div>
+<div id="raw-data-processing" class="section level1">
+<h1>Raw data processing</h1>
+<pre class="r"><code>library(tidymass)
+#&gt; Registered S3 method overwritten by &#39;Hmisc&#39;:
+#&gt;   method       from      
+#&gt;   vcov.default fit.models
+#&gt; ── Attaching packages ──────────────────────────────────────── tidymass 1.0.1 ──
+#&gt; ✔ massdataset   1.0.12     ✔ metpath       1.0.1 
+#&gt; ✔ massprocesser 1.0.2      ✔ metid         1.2.19
+#&gt; ✔ masscleaner   1.0.4      ✔ masstools     1.0.2 
+#&gt; ✔ massqc        1.0.4      ✔ dplyr         1.0.9 
+#&gt; ✔ massstat      1.0.2      ✔ ggplot2       3.3.6
+#&gt; Version 1.0.12 (2022-08-07 01:01:35)
+#&gt; Version 1.0.2 (2022-08-06 10:13:10)
+#&gt; Version 1.0.4 (2022-08-07 00:20:35)
+#&gt; Version 1.0.4 (2022-08-07 00:54:32)
+#&gt; Version 1.0.2 (2022-08-06 23:53:55)
+#&gt; Version 1.0.1 (2022-08-07 00:18:35)
+#&gt; Version 1.2.19 (2022-08-06 23:53:12)
+#&gt; Version 1.0.2 (2022-08-06 23:54:19)
+library(tidyverse)
+#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+#&gt; ✔ tibble  3.1.7          ✔ purrr   0.3.4     
+#&gt; ✔ tidyr   1.2.0          ✔ stringr 1.4.0     
+#&gt; ✔ readr   2.1.2          ✔ forcats 0.5.1.9000
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ tibble::add_column() masks massdataset::add_column()
+#&gt; ✖ tidyr::extract()     masks magrittr::extract()
+#&gt; ✖ dplyr::filter()      masks metid::filter(), metpath::filter(), massdataset::filter(), stats::filter()
+#&gt; ✖ dplyr::lag()         masks stats::lag()
+#&gt; ✖ purrr::set_names()   masks magrittr::set_names()</code></pre>
+<p><code>massprocesser</code> package in <code>tidymass</code> is used to do the raw data processing. Please refer this <a href="https://massprocesser.tidymass.org/">website</a>.</p>
+<p>The code used to do raw data processing (peak picking, peak grouping).</p>
+<pre class="r"><code>massprocesser::process_data(
+  path = &quot;cell_liang_2020/MS1/&quot;,
+  polarity = &quot;positive&quot;,
+  ppm = 10,
+  peakwidth = c(5, 30),
+  threads = 4,
+  output_tic = TRUE,
+  output_bpc = TRUE,
+  output_rt_correction_plot = FALSE,
+  min_fraction = 0.5
+)</code></pre>
+<p>All the results will be placed in the folder named <code>MS1/Result</code>. More information about that can be found <a href="https://tidymass.github.io/massprocesser/articles/raw_data_processing.html">here</a>.</p>
+<p><img src="figures/Screen-Shot%202.png" /></p>
+<ol style="list-style-type: decimal">
+<li><p>BPC.pdf: BPC plot.</p></li>
+<li><p>TIC.pdf: TIC plot.</p></li>
+<li><p>RT correction plot.pdf: Retention time correction plot.</p></li>
+<li><p>Peak_table.csv: Peak table.</p></li>
+<li><p>Peak_table_for_cleaning.csv: Peak table which can be used for data cleaning.</p></li>
+<li><p>object: <code>mass_dataset</code> class object which can be used for subsequent analysis using tidymass.</p></li>
+<li><p>intermediate_data: intermediate data.</p></li>
+</ol>
+<p>You can just load the <code>object</code>, which is a <code>mass_dataset</code> class object.</p>
+<pre class="r"><code>load(&quot;cell_liang_2020/MS1/Result/object&quot;)
+object
+#&gt; -------------------- 
+#&gt; massdataset version: 1.0.12 
+#&gt; -------------------- 
+#&gt; 1.expression_data:[ 9164 x 14 data.frame]
+#&gt; 2.sample_info:[ 14 x 4 data.frame]
+#&gt; 3.variable_info:[ 9164 x 3 data.frame]
+#&gt; 4.sample_info_note:[ 4 x 2 data.frame]
+#&gt; 5.variable_info_note:[ 3 x 2 data.frame]
+#&gt; 6.ms2_data:[ 0 variables x 0 MS2 spectra]
+#&gt; -------------------- 
+#&gt; Processing information (extract_process_info())
+#&gt; 2 processings in total
+#&gt; create_mass_dataset ---------- 
+#&gt;       Package         Function.used                Time
+#&gt; 1 massdataset create_mass_dataset() 2022-08-07 16:44:32
+#&gt; process_data ---------- 
+#&gt;         Package Function.used                Time
+#&gt; 1 massprocesser  process_data 2022-08-07 16:44:28
+dim(object)
+#&gt; variables   samples 
+#&gt;      9164        14</code></pre>
+<p>We can get basic information from the object.</p>
+<p>We have 9164 variables, 14 samples.</p>
+<p>You can use the <code>plot_adjusted_rt()</code> function to get the interactive plot.</p>
+<pre class="r"><code>load(&quot;cell_liang_2020/MS1/Result/intermediate_data/xdata2&quot;)
+####set the group_for_figure if you want to show specific groups. 
+####And set it as &quot;all&quot; if you want to show all samples.
+plot &lt;-
+  plot_adjusted_rt(object = xdata2,
+                   group_for_figure = &quot;Subject&quot;,
+                   interactive = TRUE)
+plot</code></pre>
+</div>
+<div id="explore-data" class="section level1">
+<h1>Explore data</h1>
+<p>After the <a href="https://tidymass.github.io/tidymass/articles/raw_data_processing.html"><code>raw data processing</code></a>, peak tables will be generated.</p>
+<pre class="r"><code>load(&quot;cell_liang_2020/MS1/Result/object&quot;)
+dim(object)
+#&gt; variables   samples 
+#&gt;      9164        14</code></pre>
+<p>We neet to update the sample_info in object.</p>
+<p>Read sample information.</p>
+<pre class="r"><code>sample_info &lt;- 
+  readxl::read_xlsx(&quot;cell_liang_2020/sample_info.xlsx&quot;)
+sample_info$sample_id &lt;-
+  as.character(sample_info$sample_id)</code></pre>
+<p>Add <code>sample_info</code> to <code>object</code></p>
+<pre class="r"><code>object %&gt;% 
+  extract_sample_info() %&gt;% 
+  head()
+#&gt;   sample_id   group   class injection.order
+#&gt; 1       184 Subject Subject               1
+#&gt; 2       214 Subject Subject               2
+#&gt; 3       289 Subject Subject               3
+#&gt; 4       317 Subject Subject               4
+#&gt; 5       320 Subject Subject               5
+#&gt; 6       327 Subject Subject               6</code></pre>
+<pre class="r"><code>object &lt;-
+  object %&gt;%
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;%
+  left_join(sample_info,
+            by = &quot;sample_id&quot;)
+
+object %&gt;% 
+  extract_sample_info()
+#&gt;    sample_id   group   class injection.order subject_id trimester
+#&gt; 1        184 Subject Subject               1        aaf       &gt;35
+#&gt; 2        214 Subject Subject               2        aaf       &lt;10
+#&gt; 3        289 Subject Subject               3        ace       &gt;35
+#&gt; 4        317 Subject Subject               4        acb       &lt;10
+#&gt; 5        320 Subject Subject               5        abb       &lt;10
+#&gt; 6        327 Subject Subject               6        aci       &lt;10
+#&gt; 7        348 Subject Subject               7        abi       &gt;35
+#&gt; 8        353 Subject Subject               8        abg       &gt;35
+#&gt; 9        373 Subject Subject               9        aci       &gt;35
+#&gt; 10       387 Subject Subject              10        abg       &lt;10
+#&gt; 11       408 Subject Subject              11        abi       &lt;10
+#&gt; 12       461 Subject Subject              12        acb       &gt;35
+#&gt; 13       528 Subject Subject              13        abb       &gt;35
+#&gt; 14       739 Subject Subject              14        ace       &lt;10</code></pre>
+<pre class="r"><code>object %&gt;% 
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;% 
+  dplyr::count(class)
+#&gt;     class  n
+#&gt; 1 Subject 14
+
+object %&gt;% 
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;% 
+  dplyr::count(group)
+#&gt;     group  n
+#&gt; 1 Subject 14
+
+object %&gt;% 
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;% 
+  dplyr::count(trimester)
+#&gt;   trimester n
+#&gt; 1       &lt;10 7
+#&gt; 2       &gt;35 7</code></pre>
+<p>So for the data, we have 7 subjects and 14 samples. One subject has two samples.</p>
+<p>Next, we can get the peak distributation plot.</p>
+<pre class="r"><code>object %&gt;%
+  `+`(1) %&gt;% 
+  log(10) %&gt;%
+  show_mz_rt_plot() +
+  scale_size_continuous(range = c(0.01, 2))</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-11-1.png" width="100%" /></p>
+<p>We can explore the missing values in the data.</p>
+<pre class="r"><code>get_mv_number(object = object)
+#&gt; [1] 26696
+sum(is.na(object))
+#&gt; [1] 26696</code></pre>
+<p>26,696 mvs in total.</p>
+<p>Missing value number in each sample.</p>
+<pre class="r"><code>get_mv_number(object = object, by = &quot;variable&quot;) %&gt;% 
+  head()
+#&gt; M71T823_POS  M72T34_POS M72T822_POS  M73T36_POS M74T584_POS  M75T47_POS 
+#&gt;           0           6           0           0           5           7</code></pre>
+<p>Missing value number in each variable.</p>
+<p>We can use the figure to show the missing value information.</p>
+<pre class="r"><code>show_missing_values(object = object, 
+                    show_column_names = FALSE, percentage = TRUE)</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-14-1.png" width="100%" /></p>
+<p>Show the mvs in samples</p>
+<pre class="r"><code>show_sample_missing_values(object = object, percentage = TRUE)</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-15-1.png" width="100%" /></p>
+<p>Show the mvs in variables</p>
+<pre class="r"><code>show_variable_missing_values(object = object, 
+                             percentage = TRUE, 
+                             show_x_text = FALSE, 
+                             show_x_ticks = FALSE) +
+  scale_size_continuous(range = c(0.01, 1))</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-16-1.png" width="100%" /></p>
+</div>
+<div id="data-cleaning" class="section level1">
+<h1>Data cleaning</h1>
+<div id="data-quality-assessment-before-data-cleaning" class="section level2">
+<h2>Data quality assessment before data cleaning</h2>
+<p>Here, we can use the <code>massqc</code> package to <a href="https://massqc.tidymass.org/">assess the data quality</a>.</p>
+<p>We can just use the <code>massqc_report()</code> function to get a html format quality assessment report.</p>
+<pre class="r"><code>massqc::massqc_report(object = object, 
+                      path = &quot;cell_liang_2020/data_cleaning/data_quality_before_data_cleaning&quot;)</code></pre>
+<p>A html format report and pdf figures will be placed in the folder <code>cell_liang_2020/data_cleaning/data_quality_before_data_cleaning/Report</code>.</p>
+<p><img src="figures/Screen-Shot%205.png" /></p>
+<p>The html report is below:</p>
+<p><img src="figures/Screen-Shot%206.png" /></p>
+</div>
+<div id="remove-noisy-metabolic-features" class="section level2">
+<h2>Remove noisy metabolic features</h2>
+<p>Remove variables which have MVs in more than 20% samples.</p>
+<pre class="r"><code>show_variable_missing_values(object = object, 
+                             percentage = TRUE) +
+  scale_size_continuous(range = c(0.01, 2))</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-18-1.png" width="100%" /></p>
+<pre class="r"><code>object =
+  object %&gt;%
+  mutate_variable_na_freq()
+
+head(extract_variable_info(object))
+#&gt;   variable_id       mz        rt   na_freq
+#&gt; 1 M71T823_POS 70.98037 823.24475 0.0000000
+#&gt; 2  M72T34_POS 71.90757  33.84428 0.4285714
+#&gt; 3 M72T822_POS 71.98733 822.28662 0.0000000
+#&gt; 4  M73T36_POS 73.02834  36.06493 0.0000000
+#&gt; 5 M74T584_POS 73.70056 584.35419 0.3571429
+#&gt; 6  M75T47_POS 74.81906  46.72005 0.5000000</code></pre>
+<p>Remove variables.</p>
+<pre class="r"><code>object &lt;- 
+  object %&gt;% 
+  activate_mass_dataset(what = &quot;variable_info&quot;) %&gt;%
+  filter(na_freq &lt; 0.2)
+dim(object)
+#&gt; variables   samples 
+#&gt;      4537        14</code></pre>
+<p>Only 4,537 variables left.</p>
+</div>
+<div id="filter-outlier-samples" class="section level2">
+<h2>Filter outlier samples</h2>
+<p>We can use the <code>detect_outlier()</code> to find the outlier samples.</p>
+<p>More information about how to detect outlier samples can be found <a href="https://privefl.github.io/blog/detecting-outlier-samples-in-pca/">here</a>.</p>
+<pre class="r"><code>massdataset::show_sample_missing_values(object = object,
+                                        order_by = &quot;injection.order&quot;,
+                                        percentage = TRUE) +
+  theme(axis.text.x = element_text(size = 2)) +
+  scale_size_continuous(range = c(0.1, 2)) +
+  ggsci::scale_color_aaas()</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-21-1.png" width="100%" /></p>
+<p>Detect outlier samples.</p>
+<pre class="r"><code>outlier_samples &lt;-
+  object %&gt;%
+  `+`(1) %&gt;% 
+  log(2) %&gt;%
+  scale() %&gt;%
+  detect_outlier()
+
+outlier_samples
+#&gt; -------------------- 
+#&gt; masscleaner 
+#&gt; -------------------- 
+#&gt; 1 according_to_na : 0 outlier samples.
+#&gt; 2 according_to_pc_sd : 0 outlier samples.
+#&gt; 3 according_to_pc_mad : 1 outlier samples.
+#&gt; 184 .
+#&gt; 4 accordint_to_distance : 2 outlier samples.
+#&gt; 184,214 .
+#&gt; extract all outlier table using extract_outlier_table()</code></pre>
+<pre class="r"><code>outlier_table &lt;-
+extract_outlier_table(outlier_samples)
+
+outlier_table %&gt;% 
+  head()
+#&gt;     according_to_na pc_sd pc_mad accordint_to_distance
+#&gt; 184           FALSE FALSE   TRUE                  TRUE
+#&gt; 214           FALSE FALSE  FALSE                  TRUE
+#&gt; 289           FALSE FALSE  FALSE                 FALSE
+#&gt; 317           FALSE FALSE  FALSE                 FALSE
+#&gt; 320           FALSE FALSE  FALSE                 FALSE
+#&gt; 327           FALSE FALSE  FALSE                 FALSE</code></pre>
+<p>No outlier samples according to NA.</p>
+</div>
+<div id="missing-value-imputation" class="section level2">
+<h2>Missing value imputation</h2>
+<pre class="r"><code>get_mv_number(object)
+#&gt; [1] 3224
+sum(is.na(object))
+#&gt; [1] 3224
+
+object &lt;- 
+  impute_mv(object = object, method = &quot;knn&quot;)
+#&gt; Cluster size 4537 broken into 86 4451 
+#&gt; Done cluster 86 
+#&gt; Cluster size 4451 broken into 4168 283 
+#&gt; Cluster size 4168 broken into 541 3627 
+#&gt; Done cluster 541 
+#&gt; Cluster size 3627 broken into 719 2908 
+#&gt; Done cluster 719 
+#&gt; Cluster size 2908 broken into 22 2886 
+#&gt; Done cluster 22 
+#&gt; Cluster size 2886 broken into 2097 789 
+#&gt; Cluster size 2097 broken into 1365 732 
+#&gt; Done cluster 1365 
+#&gt; Done cluster 732 
+#&gt; Done cluster 2097 
+#&gt; Done cluster 789 
+#&gt; Done cluster 2886 
+#&gt; Done cluster 2908 
+#&gt; Done cluster 3627 
+#&gt; Done cluster 4168 
+#&gt; Done cluster 283 
+#&gt; Done cluster 4451
+
+get_mv_number(object)
+#&gt; [1] 0</code></pre>
+</div>
+<div id="data-normalization-and-integration" class="section level2">
+<h2>Data normalization and integration</h2>
+<pre class="r"><code>object &lt;- 
+  normalize_data(object, method = &quot;median&quot;)</code></pre>
+<pre class="r"><code>object %&gt;% 
+  `+`(1) %&gt;% 
+  log(2) %&gt;% 
+  massqc::massqc_pca(line = FALSE)</code></pre>
+<p><img src="/start/whole_workflow/index_new_files/figure-html/unnamed-chunk-26-1.png" width="100%" /></p>
+</div>
+<div id="data-quality-assessment-after-data-cleaning" class="section level2">
+<h2>Data quality assessment after data cleaning</h2>
+<p>Here, we can use the <code>massqc</code> package to <a href="https://massqc.tidymass.org/">assess the data quality</a>.</p>
+<p>We can just use the <code>massqc_report()</code> function to get a html format quality assessment report.</p>
+<pre class="r"><code>massqc::massqc_report(object = object, 
+                      path = &quot;cell_liang_2020/data_cleaning/data_quality_after_data_cleaning&quot;)</code></pre>
+<hr />
+</div>
+</div>
+<div id="metabolite-annotation" class="section level1">
+<h1>Metabolite annotation</h1>
+<div id="add-ms2-spectra-to-object" class="section level2">
+<h2>Add MS2 spectra to object</h2>
+<pre class="r"><code>object &lt;-
+  mutate_ms2(
+    object = object,
+    column = &quot;rp&quot;,
+    polarity = &quot;positive&quot;,
+    ms1.ms2.match.mz.tol = 15,
+    ms1.ms2.match.rt.tol = 30,
+    path = &quot;cell_liang_2020/MS2/&quot;
+  )</code></pre>
+</div>
+<div id="metabolite-annotation-using-metid" class="section level2">
+<h2>Metabolite annotation using <code>metid</code></h2>
+<p>Metabolite annotation is based on the <a href="https://tidymass.github.io/metid/"><code>metid</code> package</a>.</p>
+<div id="download-database" class="section level3">
+<h3>Download database</h3>
+<p>We need to download MS2 database from <code>metid</code> <a href="https://tidymass.github.io/metid/articles/public_databases.html">website</a>.</p>
+<p>Here we download the <code>Michael Snyder RPLC databases</code>, <code>Orbitrap database</code> and <code>MoNA database</code>. And place them in a new folder named as <code>metabolite_annotation</code>.</p>
+<p><img src="figures/fig8.png" /></p>
+</div>
+<div id="annotate-features-using-snyder_database_rplc0.0.3." class="section level3">
+<h3>Annotate features using <code>snyder_database_rplc0.0.3</code>.</h3>
+<pre class="r"><code>load(&quot;cell_liang_2020/metabolite_annotation/snyder_database_rplc0.0.3.rda&quot;)</code></pre>
+<pre class="r"><code>object &lt;- 
+  annotate_metabolites_mass_dataset(object = object, 
+                                    ms1.match.ppm = 15, 
+                                    rt.match.tol = 30, 
+                                    polarity = &quot;positive&quot;,
+                                    database = snyder_database_rplc0.0.3)</code></pre>
+</div>
+<div id="annotate-features-using-orbitrap_database0.0.3." class="section level3">
+<h3>Annotate features using <code>orbitrap_database0.0.3</code>.</h3>
+<pre class="r"><code>load(&quot;cell_liang_2020/metabolite_annotation/orbitrap_database0.0.3.rda&quot;)</code></pre>
+<pre class="r"><code>object &lt;- 
+  annotate_metabolites_mass_dataset(object = object, 
+                                    ms1.match.ppm = 15, 
+                                    polarity = &quot;positive&quot;,
+                                    database = orbitrap_database0.0.3)</code></pre>
+</div>
+<div id="annotate-features-using-mona_database0.0.3." class="section level3">
+<h3>Annotate features using <code>mona_database0.0.3</code>.</h3>
+<pre class="r"><code>load(&quot;cell_liang_2020/metabolite_annotation/mona_database0.0.3.rda&quot;)</code></pre>
+<pre class="r"><code>object &lt;-
+  annotate_metabolites_mass_dataset(object = object, 
+                                    ms1.match.ppm = 15, 
+                                    polarity = &quot;positive&quot;,
+                                    database = mona_database0.0.3)</code></pre>
+</div>
+</div>
+<div id="annotation-result" class="section level2">
+<h2>Annotation result</h2>
+<pre class="r"><code>head(extract_annotation_table(object = object))
+#&gt; data frame with 0 columns and 0 rows</code></pre>
+<pre class="r"><code>variable_info &lt;-
+  extract_variable_info(object = object)
+head(variable_info)
+#&gt;   variable_id       mz        rt    na_freq
+#&gt; 1 M71T823_POS 70.98037 823.24475 0.00000000
+#&gt; 2 M72T822_POS 71.98733 822.28662 0.00000000
+#&gt; 3  M73T36_POS 73.02834  36.06493 0.00000000
+#&gt; 4 M76T812_POS 76.10571 812.14087 0.14285714
+#&gt; 5  M77T33_POS 77.03845  32.64994 0.00000000
+#&gt; 6  M78T47_POS 77.96823  47.00970 0.07142857
+table(variable_info$Level)
+#&gt; &lt; table of extent 0 &gt;
+table(variable_info$Database)
+#&gt; &lt; table of extent 0 &gt;</code></pre>
+<pre class="r"><code>ms2_plot_mass_dataset(object = object,
+                      variable_id = &quot;M123T56_POS&quot;,
+                      database = snyder_database_rplc0.0.3)</code></pre>
+<hr />
+</div>
+</div>
+<div id="statistical-analysis" class="section level1">
+<h1>Statistical analysis</h1>
+<div id="remove-the-features-without-annotations" class="section level2">
+<h2>Remove the features without annotations</h2>
+<pre class="r"><code>object &lt;- 
+  object %&gt;% 
+  activate_mass_dataset(what = &quot;annotation_table&quot;) %&gt;% 
+  filter(!is.na(Level)) %&gt;% 
+  filter(Level == 1 | Level == 2)</code></pre>
+<pre class="r"><code>object
+#&gt; -------------------- 
+#&gt; massdataset version: 1.0.12 
+#&gt; -------------------- 
+#&gt; 1.expression_data:[ 4537 x 14 data.frame]
+#&gt; 2.sample_info:[ 14 x 6 data.frame]
+#&gt; 3.variable_info:[ 4537 x 4 data.frame]
+#&gt; 4.sample_info_note:[ 6 x 2 data.frame]
+#&gt; 5.variable_info_note:[ 4 x 2 data.frame]
+#&gt; 6.ms2_data:[ 0 variables x 0 MS2 spectra]
+#&gt; -------------------- 
+#&gt; Processing information (extract_process_info())
+#&gt; 6 processings in total
+#&gt; Latest 3 processings show
+#&gt; filter ---------- 
+#&gt;       Package Function.used                Time
+#&gt; 1 massdataset      filter() 2022-08-07 19:52:56
+#&gt; impute_mv ---------- 
+#&gt;       Package Function.used                Time
+#&gt; 1 masscleaner   impute_mv() 2022-08-07 19:52:57
+#&gt; normalize_data ---------- 
+#&gt;       Package    Function.used                Time
+#&gt; 1 masscleaner normalize_data() 2022-08-07 19:52:57</code></pre>
+</div>
+<div id="trace-processing-information-of-object" class="section level2">
+<h2>Trace processing information of object</h2>
+<p>Then we can use the <code>report_parameters()</code> function to trace processing information of object.</p>
+<p>All the analysis results will be placed in a folder named as <code>statistical_analysis</code>.</p>
+<pre class="r"><code>dir.create(path = &quot;cell_liang_2020/statistical_analysis&quot;, showWarnings = FALSE)</code></pre>
+<pre class="r"><code>report_parameters(object = object, path = &quot;cell_liang_2020/statistical_analysis/&quot;)</code></pre>
+<p>A html format file named as <code>parameter_report.html</code> will be generated.</p>
+<p><img src="figures/fig9.png" /></p>
+</div>
+<div id="remove-redundant-metabolites" class="section level2">
+<h2>Remove redundant metabolites</h2>
+<p>Remove the redundant annotated metabolites bases on <code>Level</code> and score.</p>
+<pre class="r"><code>object &lt;-
+  object %&gt;% 
+  activate_mass_dataset(what = &quot;annotation_table&quot;) %&gt;% 
+  group_by(Compound.name) %&gt;% 
+  filter(Level == min(Level)) %&gt;% 
+  filter(SS == max(SS)) %&gt;% 
+  slice_head(n = 1)</code></pre>
+</div>
+<div id="differential-expression-metabolites" class="section level2">
+<h2>Differential expression metabolites</h2>
+<div id="calculate-the-fold-changes." class="section level3">
+<h3>Calculate the fold changes.</h3>
+<pre class="r"><code>object &lt;-
+  object %&gt;%
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;%
+  dplyr::arrange(subject_id, trimester)
+
+control_sample_id &lt;-
+  object %&gt;%
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;%
+  filter(trimester == &quot;&lt;10&quot;) %&gt;%
+  pull(sample_id)
+
+case_sample_id &lt;-
+  object %&gt;%
+  activate_mass_dataset(what = &quot;sample_info&quot;) %&gt;%
+  filter(trimester == &quot;&gt;35&quot;) %&gt;%
+  pull(sample_id)</code></pre>
+<pre class="r"><code>object &lt;-
+  mutate_fc(object = object, 
+            control_sample_id = control_sample_id, 
+            case_sample_id = case_sample_id, 
+            mean_median = &quot;mean&quot;)</code></pre>
+</div>
+<div id="calculate-p-values." class="section level3">
+<h3>Calculate p values.</h3>
+<pre class="r"><code>object &lt;-
+  mutate_p_value(
+    object = object,
+    control_sample_id = control_sample_id,
+    case_sample_id = case_sample_id,
+    method = &quot;wilcox.test&quot;,
+    p_adjust_methods = &quot;BH&quot;,
+    paired = TRUE
+  )</code></pre>
+</div>
+<div id="volcano-plot." class="section level3">
+<h3>Volcano plot.</h3>
+<pre class="r"><code>volcano_plot(object = object,
+             add_text = TRUE,
+             text_from = &quot;Compound.name&quot;, 
+             point_size_scale = &quot;p_value&quot;) +
+  scale_size_continuous(range = c(0.5, 5))</code></pre>
+</div>
+</div>
+<div id="output-result" class="section level2">
+<h2>Output result</h2>
+<p>Output the differential expression metabolites.</p>
+<pre class="r"><code>differential_metabolites &lt;- 
+  extract_variable_info(object = object) %&gt;% 
+  filter(fc &gt; 2 | fc &lt; 0.5) %&gt;% 
+  filter(p_value_adjust &lt; 0.05)
+
+readr::write_csv(differential_metabolites, 
+                 file = &quot;cell_liang_2020/statistical_analysis/differential_metabolites.csv&quot;)</code></pre>
+</div>
+</div>
+<div id="pathway-enrichment-analysis" class="section level1">
+<h1>Pathway enrichment analysis</h1>
+<p>All the results will be placed in a folder named as <code>pathway_enrichment</code>.</p>
+<pre class="r"><code>dir.create(path = &quot;cell_liang_2020/pathway_enrichment&quot;, showWarnings = FALSE)</code></pre>
+<pre class="r"><code>diff_metabolites &lt;-
+  object %&gt;% 
+  activate_mass_dataset(what = &quot;variable_info&quot;) %&gt;% 
+  filter(p_value_adjust &lt; 0.05) %&gt;% 
+  extract_variable_info()</code></pre>
+<pre class="r"><code>head(diff_metabolites)</code></pre>
+<div id="load-kegg-human-pathway-database" class="section level2">
+<h2>Load <code>KEGG</code> human pathway database</h2>
+<pre class="r"><code>data(&quot;kegg_hsa_pathway&quot;, package = &quot;metpath&quot;)
+kegg_hsa_pathway</code></pre>
+<pre class="r"><code>get_pathway_class(kegg_hsa_pathway)</code></pre>
+</div>
+<div id="remove-the-disease-pathways" class="section level2">
+<h2>Remove the disease pathways:</h2>
+<pre class="r"><code>#get the class of pathways
+pathway_class &lt;- 
+  metpath::pathway_class(kegg_hsa_pathway)
+head(pathway_class)</code></pre>
+<pre class="r"><code>remain_idx &lt;-
+  pathway_class %&gt;%
+  unlist() %&gt;%
+  stringr::str_detect(&quot;Disease&quot;) %&gt;%
+  `!`() %&gt;%
+  which()
+
+remain_idx</code></pre>
+<pre class="r"><code>pathway_database &lt;-
+  kegg_hsa_pathway[remain_idx]
+pathway_database</code></pre>
+</div>
+<div id="pathway-enrichment" class="section level2">
+<h2>Pathway enrichment</h2>
+<pre class="r"><code>kegg_id &lt;-
+  diff_metabolites$KEGG.ID 
+kegg_id &lt;-
+  kegg_id[!is.na(kegg_id)]
+kegg_id</code></pre>
+<pre class="r"><code>result &lt;- 
+enrich_kegg(query_id = kegg_id, 
+            query_type = &quot;compound&quot;, 
+            id_type = &quot;KEGG&quot;,
+            pathway_database = pathway_database, 
+            p_cutoff = 0.05, 
+            p_adjust_method = &quot;BH&quot;, 
+            threads = 3)</code></pre>
+</div>
+<div id="check-the-result" class="section level2">
+<h2>Check the result:</h2>
+<pre class="r"><code>result</code></pre>
+</div>
+<div id="plot-to-show-pathway-enrichment-result" class="section level2">
+<h2>Plot to show pathway enrichment result</h2>
+<pre class="r"><code>enrich_bar_plot(object = result,
+                x_axis = &quot;p_value&quot;,
+                cutoff = 0.05)</code></pre>
+<pre class="r"><code>enrich_scatter_plot(object = result, y_axis = &quot;p_value&quot;, y_axis_cutoff = 0.05)</code></pre>
+<pre class="r"><code>enrich_network(
+  object = result,
+  point_size = &quot;p_value&quot;,
+  p_cutoff = 0.05,
+  only_significant_pathway = TRUE
+)</code></pre>
+</div>
+</div>
+<div id="session-information" class="section level1">
+<h1>Session information</h1>
+<pre class="r"><code>sessionInfo()</code></pre>
+</div>
