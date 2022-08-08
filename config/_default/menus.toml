@@ -18,9 +18,13 @@
     url = "/more/"
     weight = 4
 [[main]]
+    name = "Blog/News"
+    url = "/blog/"
+    weight = 5
+[[main]]
     name = "Contact"
     url = "/contact/"
-    weight = 5
+    weight = 6
 [[main]]
     pre = "<i class=\"fab fa-github fa-lg\"></i>"
     url = "https://github.com/tidymass/"
