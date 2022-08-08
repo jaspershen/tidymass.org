@@ -1,6 +1,13 @@
 ---
-title: "Untitled"
-output: html_document
+title: "New package massDatabase"
+date: "2022-08-08"
+output:
+  html_document:
+    number_sections: true
+    df_print: paged
+    toc: yes
+  pdf_document:
+    toc: no
 ---
 
 ```{r setup, include=FALSE}

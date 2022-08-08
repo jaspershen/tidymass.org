@@ -1,6 +1,13 @@
 ---
-title: "Untitled"
-output: html_document
+title: "New package massDatabase"
+date: "2022-08-08"
+output:
+  html_document:
+    number_sections: true
+    df_print: paged
+    toc: yes
+  pdf_document:
+    toc: no
 ---
 
 
@@ -30,6 +37,6 @@ summary(cars)
 
 You can also embed plots, for example:
 
-<img src="/blog/methods_for_s3_s4_files/figure-html/pressure-1.png" width="672" />
+<img src="/blog/massdatabase_files/figure-html/pressure-1.png" width="672" />
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
