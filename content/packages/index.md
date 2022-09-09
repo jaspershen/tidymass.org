@@ -86,7 +86,7 @@ title: TidyMass packages
     <div class="package">
     <img class="package-image" src="/images/massdatabase_logo.png" alt=""></img>
     <div class="package-info">
-      <h3><a href="https://massconverter.tidymass.org/"> massDatabase </a></h3>
+      <h3><a href="https://massdatabase.tidymass.org/"> massDatabase </a></h3>
       <p>massdatabase is used to operate the online databases. 
       <a href="https://massdatabase.tidymass.org/" aria-hidden="true">More information ...</a></p>
     </div>

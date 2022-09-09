@@ -35,7 +35,7 @@ Link: https://www.nature.com/articles/s41467-022-32155-w#citeas
 
 # Contact
 
-If you have any quesitons, please contact me.
+If you have any questions, please contact me.
 
 
 <i class="fab fa-weixin fa-lg"></i> [shenxt1990](https://www.shenxt.info/files/wechat_QR.jpg)
