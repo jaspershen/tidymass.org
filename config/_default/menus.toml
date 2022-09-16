@@ -15,7 +15,7 @@
     weight = 3
 [[main]]
     name = "Book"
-    url = "https://tidymass-book.tidymass.org/"
+    url = "https://book.tidymass.org/"
     weight = 4
 [[main]]
     name = "More"
