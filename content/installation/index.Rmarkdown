@@ -38,7 +38,7 @@ install.packages("remotes")
 Install `tidymass` by:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
+remotes::install_gitlab("tidymass/tidymass", dependencies = TRUE)
 ```
 
 > During installing, it may ask you several times: "Would you like to update some pacakges?" Just Enter the `Enter` or `Retrun` key to skip updates.
@@ -52,14 +52,14 @@ remotes::install_gitlab("jaspershen/tidymass", dependencies = TRUE)
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_gitlab("jaspershen/masstools", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/massdataset", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/massqc", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/massprocesser", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/masscleaner", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/massstat", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/metid", dependencies = TRUE)
-remotes::install_gitlab("jaspershen/metpath", dependencies = TRUE)
+remotes::install_gitlab("tidymass/masstools", dependencies = TRUE)
+remotes::install_gitlab("tidymass/massdataset", dependencies = TRUE)
+remotes::install_gitlab("tidymass/massqc", dependencies = TRUE)
+remotes::install_gitlab("tidymass/massprocesser", dependencies = TRUE)
+remotes::install_gitlab("tidymass/masscleaner", dependencies = TRUE)
+remotes::install_gitlab("tidymass/massstat", dependencies = TRUE)
+remotes::install_gitlab("tidymass/metid", dependencies = TRUE)
+remotes::install_gitlab("tidymass/metpath", dependencies = TRUE)
 ```
 
 ## Install `tidymass` from `GitHub`
@@ -129,7 +129,7 @@ If you can't install pacakgs from `GitHub` and `GitLab`, please try install pack
 ### Install `tidymass`
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_git(url = "https://gitee.com/jaspershen/tidymass", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/tidymass", dependencies = TRUE)
 ```
 
 ### Install `tidymass` packages one by one.
@@ -137,14 +137,14 @@ remotes::install_git(url = "https://gitee.com/jaspershen/tidymass", dependencies
 If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_git(url = "https://gitee.com/jaspershen/masstools", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/massdataset", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/massqc", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/massprocesser", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/masscleaner", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/massstat", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/metid", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/jaspershen/metpath", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/masstools", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/massdataset", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/massqc", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/massprocesser", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/masscleaner", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/massstat", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/metid", dependencies = TRUE)
+remotes::install_git(url = "https://gitee.com/tidymass/metpath", dependencies = TRUE)
 ```
 
 [Let me know if you have any questions](https://github.com/tidymass/tidymass/issues).
@@ -237,7 +237,7 @@ RUN chmod 777 /home/rstudio/demo_data/
 
 RUN R -e 'install.packages("remotes")'
 
-RUN R -e "remotes::install_gitlab('jaspershen/tidymass')"
+RUN R -e "remotes::install_gitlab('tidymass/tidymass')"
 ```
 
 If you want to install packages (for example `ggraph`) which are necessary for you analysis, please add a new line:
