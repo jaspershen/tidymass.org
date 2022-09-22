@@ -103,7 +103,21 @@ remotes::install_git(url = "https://gitee.com/tidymass/tidymass", dependencies =
 
 ## Install `tidymass` by `local packages`
 
+### Source the install_tidymass function.
 
+Copy and paste the below code in your console.
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
+```
+
+### Install packages
+
+Copy and paste the below code in your console.
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
+```
 
 # Update `tidymass`
 

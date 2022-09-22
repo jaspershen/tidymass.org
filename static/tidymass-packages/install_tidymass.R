@@ -1,7 +1,7 @@
 install_tidymass <-
   function(packages = c("core", "all"),
            which_package,
-           from = c("gitlab", "github", "gitee", "shen"),
+           from = c("gitlab", "github", "gitee", "shen", "tidymass.org"),
            method = c("auto", "internal", "libcurl",
                       "wget", "curl")) {
     packages <- match.arg(packages)
@@ -40,6 +40,17 @@ install_tidymass <-
     if (from == "shen") {
       utils::download.file(
         url = "https://scpa.netlify.app/tidymass/file.csv",
+        destfile = file.path(temp_path, "file.csv"),
+        method = method
+      )
+      file <-
+        readr::read_csv(file.path(temp_path, "file.csv"),
+                        show_col_types = FALSE)
+    }
+    
+    if (from == "tidymass.org") {
+      utils::download.file(
+        url = "https://www.tidymass.org/tidymass-packages/file.csv",
         destfile = file.path(temp_path, "file.csv"),
         method = method
       )
@@ -110,6 +121,12 @@ install_tidymass <-
                    file$file_name.y[file$package == x])
         }
         
+        if (from == "tidymass.org") {
+          url <-
+            paste0("https://www.tidymass.org/tidymass-packages/",
+                   file$file_name.y[file$package == x])
+        }
+        
         utils::download.file(
           url = url,
           destfile = file.path(temp_path, file$file_name.y[file$package == x]),
@@ -123,8 +140,11 @@ install_tidymass <-
           }
         )
         
-        remotes::install_deps(pkgdir = file.path(temp_path, file$file_name.y[file$package == x]), 
-                              dependencies = TRUE, upgrade = "never")
+        remotes::install_deps(
+          pkgdir = file.path(temp_path, file$file_name.y[file$package == x]),
+          dependencies = TRUE,
+          upgrade = "never"
+        )
         
         # install.packages(file.path(temp_path, file$file_name.y[file$package == x]),
         #                  repos = NULL,
