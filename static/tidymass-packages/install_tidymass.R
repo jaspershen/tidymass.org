@@ -97,8 +97,9 @@ install_tidymass <-
       }
     }
     
+    ####download the packages
     for (x in package_list) {
-      message("Install ", x, "...")
+      message("Download ", x, "...")
       ##install masstools first
       if (from == "github") {
         url <-
@@ -142,6 +143,13 @@ install_tidymass <-
         destfile = file.path(temp_path, file$file_name.y[file$package == x]),
         method = method
       )
+    }
+    
+    
+    ####install package
+    for (x in package_list) {
+      message("Install ", x, "...")
+      ##install masstools first
       
       tryCatch(
         detach(name = paste0("package:", x)),
@@ -150,12 +158,30 @@ install_tidymass <-
         }
       )
       
-      remotes::install_deps(
-        pkgdir = file.path(temp_path, file$file_name.y[file$package == x]),
-        dependencies = TRUE,
-        upgrade = "never"
-      )
-      
+      if (x == "tidymass") {
+        detach("package:purrr")
+        detach("package:stringr")
+        # install.packages("purrr")
+        # install.packages("stringr")
+        
+        install.packages(
+          file.path(temp_path, file$file_name.y[file$package == x]),
+          repos = NULL,
+          dependencies = TRUE
+        )
+      } else{
+        install.packages(
+          file.path(temp_path, file$file_name.y[file$package == x]),
+          repos = NULL,
+          dependencies = TRUE
+        )
+        
+        remotes::install_deps(
+          pkgdir = file.path(temp_path, file$file_name.y[file$package == x]),
+          dependencies = TRUE,
+          upgrade = "never"
+        )
+      }
       unlink(file.path(temp_path, file$file_name.y[file$package == x]))
     }
     
