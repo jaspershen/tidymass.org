@@ -116,7 +116,8 @@ source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
 Copy and paste the below code in your console.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
+library(tidyverse)
+install_tidymass(from = "tidymass.org")
 ```
 
 # Update `tidymass`
