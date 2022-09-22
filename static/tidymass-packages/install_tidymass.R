@@ -159,8 +159,8 @@ install_tidymass <-
       )
       
       if (x == "tidymass") {
-        detach("package:purrr")
-        detach("package:stringr")
+        # detach("package:purrr")
+        # detach("package:stringr")
         # install.packages("purrr")
         # install.packages("stringr")
         
