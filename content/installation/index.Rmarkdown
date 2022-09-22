@@ -6,7 +6,7 @@ title: "Install tidymass"
 
 > Please make sure your internet is connected and stable. 
 
-And if you have any problems during the installation, please feel free to send email to us (shenxt@stanford.edu) or contact me via [other social medias](https://www.tidymass.org/contact/).
+And if you have any problems during the installation, please feel free to send email to us (shenxt1990@outlook.edu) or contact me via [other social medias](https://www.tidymass.org/contact/).
 
 ## Update R version
 
@@ -46,21 +46,6 @@ remotes::install_gitlab("tidymass/tidymass", dependencies = TRUE)
 ![](figures/fig2.png)
 
 > If you have a completely fresh R enivorment, it needs to install all the dependent packages, so it will take around 30 mins to finish the installation of `tidymass`. In my Mac pro (macOS Monterey, 2.3 GHz 8-core intel core i9, 16GB 2667 MHz DDR4), it takes about 30 mins to finish the installation in a completely fresh R enivorment.
-
-### Install `tidymass` packages one by one
-
-If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_gitlab("tidymass/masstools", dependencies = TRUE)
-remotes::install_gitlab("tidymass/massdataset", dependencies = TRUE)
-remotes::install_gitlab("tidymass/massqc", dependencies = TRUE)
-remotes::install_gitlab("tidymass/massprocesser", dependencies = TRUE)
-remotes::install_gitlab("tidymass/masscleaner", dependencies = TRUE)
-remotes::install_gitlab("tidymass/massstat", dependencies = TRUE)
-remotes::install_gitlab("tidymass/metid", dependencies = TRUE)
-remotes::install_gitlab("tidymass/metpath", dependencies = TRUE)
-```
 
 ## Install `tidymass` from `GitHub`
 
@@ -106,25 +91,9 @@ GITHUB_PAT=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
 And then restart R session and try again.
 
 
-### Install `tidymass` packages one by one
-
-If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_github("tidymass/masstools", dependencies = TRUE)
-remotes::install_github("tidymass/massdataset", dependencies = TRUE)
-remotes::install_github("tidymass/massqc", dependencies = TRUE)
-remotes::install_github("tidymass/massprocesser", dependencies = TRUE)
-remotes::install_github("tidymass/masscleaner", dependencies = TRUE)
-remotes::install_github("tidymass/massstat", dependencies = TRUE)
-remotes::install_github("tidymass/metid", dependencies = TRUE)
-remotes::install_github("tidymass/metpath", dependencies = TRUE)
-```
-
-
 ## Install `tidymass` from `Gitee`
 
-If you can't install pacakgs from `GitHub` and `GitLab`, please try install packages from `Gitee`.
+If you can't install packages from `GitHub` and `GitLab`, please try install packages from `Gitee`.
 
 ### Install `tidymass`
 
@@ -132,22 +101,9 @@ If you can't install pacakgs from `GitHub` and `GitLab`, please try install pack
 remotes::install_git(url = "https://gitee.com/tidymass/tidymass", dependencies = TRUE)
 ```
 
-### Install `tidymass` packages one by one.
+## Install `tidymass` by `local packages`
 
-If you use the Windows OS and the dependencies can not be installed, try to install all the `tidymass` packages one by one.
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_git(url = "https://gitee.com/tidymass/masstools", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/massdataset", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/massqc", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/massprocesser", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/masscleaner", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/massstat", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/metid", dependencies = TRUE)
-remotes::install_git(url = "https://gitee.com/tidymass/metpath", dependencies = TRUE)
-```
-
-[Let me know if you have any questions](https://github.com/tidymass/tidymass/issues).
 
 # Update `tidymass`
 
