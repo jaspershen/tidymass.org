@@ -8,6 +8,10 @@ install_tidymass <-
       install.packages("remotes")
     }
     
+    if (!require(tidyverse)) {
+      install.packages("tidyverse")
+    }
+    
     packages <- match.arg(packages)
     from <- match.arg(from)
     method <- match.arg(method)
