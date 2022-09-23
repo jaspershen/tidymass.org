@@ -4,6 +4,10 @@ install_tidymass <-
            from = c("gitlab", "github", "gitee", "shen", "tidymass.org"),
            method = c("auto", "internal", "libcurl",
                       "wget", "curl")) {
+    if (!require(remotes)) {
+      install.packages("remotes")
+    }
+    
     packages <- match.arg(packages)
     from <- match.arg(from)
     method <- match.arg(method)
@@ -13,27 +17,31 @@ install_tidymass <-
     unlink(x = file.path(temp_path, dir(temp_path)),
            recursive = TRUE,
            force = TRUE)
+    
     if (from == "gitee") {
       file <-
-        readr::read_csv(
+        read.table(
           "https://gitee.com/tidymass/packages_repo/raw/main/packages/file.csv",
-          show_col_types = FALSE
+          sep = ",",
+          header = TRUE
         )
     }
     
     if (from == "gitlab") {
       file <-
-        readr::read_csv(
+        read.table(
           "https://gitlab.com/tidymass/packages_repo/-/raw/main/packages/file.csv",
-          show_col_types = FALSE
+          sep = ",",
+          header = TRUE
         )
     }
     
     if (from == "github") {
       file <-
-        readr::read_csv(
+        read.table(
           "https://raw.githubusercontent.com/tidymass/packages_repo/main/packages/file.csv",
-          show_col_types = FALSE
+          sep = ",",
+          header = TRUE
         )
     }
     
@@ -44,8 +52,9 @@ install_tidymass <-
         method = method
       )
       file <-
-        readr::read_csv(file.path(temp_path, "file.csv"),
-                        show_col_types = FALSE)
+        read.table(file.path(temp_path, "file.csv"),
+                   sep = ",",
+                   header = TRUE)
     }
     
     if (from == "tidymass.org") {
@@ -59,6 +68,7 @@ install_tidymass <-
                         show_col_types = FALSE)
     }
     
+    ####package list
     core_package_list <-
       c(
         "masstools",
@@ -86,58 +96,84 @@ install_tidymass <-
             "massdatabase")
       }
     }
-    package_list %>%
-      purrr::walk(function(x) {
-        message("Install ", x, "...")
-        ##install masstools first
-        if (from == "github") {
-          url <-
-            paste0(
-              "https://github.com/tidymass/packages_repo/raw/main/packages/",
-              file$file_name.y[file$package == x]
-            )
+    
+    ####download the packages
+    for (x in package_list) {
+      message("Download ", x, "...")
+      ##install masstools first
+      if (from == "github") {
+        url <-
+          paste0(
+            "https://github.com/tidymass/packages_repo/raw/main/packages/",
+            file$file_name.y[file$package == x]
+          )
+      }
+      
+      if (from == "gitlab") {
+        url <-
+          paste0(
+            "https://gitlab.com/tidymass/packages_repo/-/raw/main/packages/",
+            file$file_name.y[file$package == x],
+            "?inline=false"
+          )
+      }
+      
+      if (from == "gitee") {
+        url <-
+          paste0(
+            "https://gitee.com/tidymass/packages_repo/raw/main/packages/",
+            file$file_name.y[file$package == x]
+          )
+      }
+      
+      if (from == "shen") {
+        url <-
+          paste0("https://scpa.netlify.app/tidymass/",
+                 file$file_name.y[file$package == x])
+      }
+      
+      if (from == "tidymass.org") {
+        url <-
+          paste0("https://www.tidymass.org/tidymass-packages/",
+                 file$file_name.y[file$package == x])
+      }
+      
+      utils::download.file(
+        url = url,
+        destfile = file.path(temp_path, file$file_name.y[file$package == x]),
+        method = method
+      )
+    }
+    
+    
+    ####install package
+    for (x in package_list) {
+      message("Install ", x, "...")
+      ##install masstools first
+      
+      tryCatch(
+        detach(name = paste0("package:", x)),
+        error = function(e) {
+          message(x, " is not loaded")
         }
+      )
+      
+      if (x == "tidymass") {
+        # detach("package:purrr")
+        # detach("package:stringr")
+        # install.packages("purrr")
+        # install.packages("stringr")
         
-        if (from == "gitlab") {
-          url <-
-            paste0(
-              "https://gitlab.com/tidymass/packages_repo/-/raw/main/packages/",
-              file$file_name.y[file$package == x],
-              "?inline=false"
-            )
-        }
-        
-        if (from == "gitee") {
-          url <-
-            paste0(
-              "https://gitee.com/tidymass/packages_repo/raw/main/packages/",
-              file$file_name.y[file$package == x]
-            )
-        }
-        
-        if (from == "shen") {
-          url <-
-            paste0("https://scpa.netlify.app/tidymass/",
-                   file$file_name.y[file$package == x])
-        }
-        
-        if (from == "tidymass.org") {
-          url <-
-            paste0("https://www.tidymass.org/tidymass-packages/",
-                   file$file_name.y[file$package == x])
-        }
-        
-        utils::download.file(
-          url = url,
-          destfile = file.path(temp_path, file$file_name.y[file$package == x]),
-          method = method
+        install.packages(
+          file.path(temp_path, file$file_name.y[file$package == x]),
+          repos = NULL,
+          dependencies = TRUE
         )
-        
-        tryCatch(
-          detach(name = paste0("package:", x)),
-          error = function(e) {
-            message(x, " in not loaded")
-          }
+      } else{
+        install.packages(
+          file.path(temp_path, file$file_name.y[file$package == x]),
+          repos = NULL,
+          dependencies = TRUE
         )
         
         remotes::install_deps(
@@ -145,12 +181,9 @@ install_tidymass <-
           dependencies = TRUE,
           upgrade = "never"
         )
-        
-        # install.packages(file.path(temp_path, file$file_name.y[file$package == x]),
-        #                  repos = NULL,
-        #                  type = "source")
-        
-        unlink(file.path(temp_path, file$file_name.y[file$package == x]))
-      })
+      }
+      unlink(file.path(temp_path, file$file_name.y[file$package == x]))
+    }
+    
     message("All done.")
   }
