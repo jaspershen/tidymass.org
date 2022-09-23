@@ -12,6 +12,14 @@ install_tidymass <-
       install.packages("tidyverse")
     }
     
+    if (!require(BiocManager)) {
+      install.packages("BiocManager")
+    }
+    
+    if (!require(Rdisop)) {
+      BiocManager::install("Rdisop")
+    }
+    
     packages <- match.arg(packages)
     from <- match.arg(from)
     method <- match.arg(method)
