@@ -64,8 +64,9 @@ install_tidymass <-
         method = method
       )
       file <-
-        readr::read_csv(file.path(temp_path, "file.csv"),
-                        show_col_types = FALSE)
+        read.table(file.path(temp_path, "file.csv"),
+                   sep = ",",
+                   header = TRUE)
     }
     
     ####package list
