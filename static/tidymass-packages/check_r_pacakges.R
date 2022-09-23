@@ -36,6 +36,8 @@ seq_len(nrow(file)) %>%
     if (file$version.x[i] != file$version.y[i]) {
       unlink(file.path("static/tidymass-packages/", file$file_name.x[i]))
       file.copy(from = file.path("..",  file$file_name.y[i]), to = "static/tidymass-packages/")
+      file.copy(from = file.path("..",  file$package[i], "/Description"), 
+                to = paste0("static/tidymass-packages/", file$package[i], "_Description.txt"))
     }
   })
 
