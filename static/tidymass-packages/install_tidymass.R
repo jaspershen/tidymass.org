@@ -21,7 +21,7 @@ install_tidymass <-
     }
     
     if (!require(Rdisop)) {
-      BiocManager::install("Rdisop")
+      BiocManager::install("Rdisop", ask = FALSE, update = FALSE)
     }
     
     installed_packages <-
