@@ -8,6 +8,10 @@ install_tidymass <-
       install.packages("remotes")
     }
     
+    if (!require(utils)) {
+      install.packages("utils")
+    }
+    
     if (!require(tidyverse)) {
       install.packages("tidyverse")
     }
@@ -19,6 +23,10 @@ install_tidymass <-
     if (!require(Rdisop)) {
       BiocManager::install("Rdisop")
     }
+    
+    installed_packages <-
+      utils::installed.packages() %>%
+      as.data.frame()
     
     packages <- match.arg(packages)
     from <- match.arg(from)
@@ -149,6 +157,49 @@ install_tidymass <-
         url <-
           paste0("https://www.tidymass.org/tidymass-packages/",
                  file$file_name.y[file$package == x])
+        
+        dependent_package <-
+          readLines(
+            paste0(
+              "https://www.tidymass.org/tidymass-packages/",
+              file$package[file$package == x],
+              "_Description.txt"
+            )
+          )
+        
+        idx1 <-
+          grep("Imports", dependent_package)
+        idx2 <-
+          grep("License", dependent_package)
+        dependent_package <-
+          dependent_package[(idx1 + 1):(idx2 - 1)] %>%
+          stringr::str_trim(side = "both") %>%
+          stringr::str_replace(",", "")
+        
+        dependent_package <-
+          dependent_package[!dependent_package %in% installed_packages$Package]
+        if (dependent_package > 0) {
+          dependent_package %>%
+            purrr::walk(
+              .f = function(temp_pkg) {
+                tryCatch(
+                  install.packages(temp_pkg),
+                  error = function(e) {
+                    NULL
+                  }
+                )
+                
+                tryCatch(
+                  BiocManager::install(temp_pkg, ask = FALSE, update = FALSE),
+                  error = function(e) {
+                    NULL
+                  }
+                )
+                
+              }
+            )
+          
+        }
       }
       
       utils::download.file(
