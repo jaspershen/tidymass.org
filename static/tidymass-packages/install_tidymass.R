@@ -178,7 +178,7 @@ install_tidymass <-
         
         dependent_package <-
           dependent_package[!dependent_package %in% installed_packages$Package]
-        if (dependent_package > 0) {
+        if (length(dependent_package) > 0) {
           dependent_package %>%
             purrr::walk(
               .f = function(temp_pkg) {
