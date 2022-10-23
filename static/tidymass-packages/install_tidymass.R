@@ -1,7 +1,7 @@
 install_tidymass <-
-  function(packages = c("core", "all"),
+  function(packages = c("all","core"),
            which_package,
-           from = c("gitlab", "github", "gitee", "shen", "tidymass.org"),
+           from = c("tidymass.org","gitlab", "github", "gitee", "shen"),
            method = c("auto", "internal", "libcurl",
                       "wget", "curl")) {
     if (!require(remotes)) {
