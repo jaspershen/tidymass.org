@@ -19,7 +19,7 @@ Install tidymass with:
 if(!require(remotes)){
 install.packages("remotes")
 }
-remotes::install_gitlab("jaspershen/tidymass")
+remotes::install_gitlab("tidymass/tidymass")
 ```
 
 More information can be found [here](https://www.tidymass.org/installation/).

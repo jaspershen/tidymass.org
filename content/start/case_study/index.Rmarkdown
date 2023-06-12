@@ -68,7 +68,7 @@ if(!require(remotes)){
 }
 
 if(!require(remotes)){
-  remotes::install_gitlab("jaspershen/tidymass")
+  remotes::install_gitlab("tidymass/tidymass")
 }
 ```
 
