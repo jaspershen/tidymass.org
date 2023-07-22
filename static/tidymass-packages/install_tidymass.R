@@ -1,7 +1,7 @@
 install_tidymass <-
-  function(packages = c("all","core"),
+  function(packages = c("all", "core"),
            which_package,
-           from = c("tidymass.org","gitlab", "github", "gitee", "shen"),
+           from = c("tidymass.org", "gitlab", "github", "gitee", "shen"),
            method = c("auto", "internal", "libcurl",
                       "wget", "curl")) {
     if (!require(remotes)) {
@@ -178,6 +178,24 @@ install_tidymass <-
         
         dependent_package <-
           dependent_package[!dependent_package %in% installed_packages$Package]
+        
+        dependent_package <-
+          dependent_package[-c(
+            grep("Imports", dependent_package),
+            grep("R \\(", dependent_package),
+            grep("Depends", dependent_package),
+            grep("BugReports", dependent_package),
+            grep("URL\\: ", dependent_package),
+            grep("License\\: ", dependent_package),
+            grep("and reproducible", dependent_package),
+            grep("LazyData", dependent_package),
+            grep("Encoding\\:", dependent_package),
+            grep("VignetteBuilder\\:", dependent_package),
+            grep("RoxygenNote\\:", dependent_package),
+            grep("Roxygen\\:", dependent_package),
+            grep("Description\\:", dependent_package)
+          )]
+        
         if (length(dependent_package) > 0) {
           dependent_package %>%
             purrr::walk(
@@ -195,10 +213,8 @@ install_tidymass <-
                     NULL
                   }
                 )
-                
               }
             )
-          
         }
       }
       
@@ -208,7 +224,6 @@ install_tidymass <-
         method = method
       )
     }
-    
     
     ####install package
     for (x in package_list) {
