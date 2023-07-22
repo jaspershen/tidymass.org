@@ -16,6 +16,8 @@ install_tidymass <-
       install.packages("tidyverse")
     }
     
+    library(tidyverse, warn.conflicts = FALSE, verbose = FALSE)
+    
     if (!require(BiocManager)) {
       install.packages("BiocManager")
     }

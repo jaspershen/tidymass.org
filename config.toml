@@ -33,15 +33,15 @@ preserveTaxonomyNames = true
 #   See: https://gohugo.io/getting-started/configuration/#configure-blackfriday
 [blackfriday]
   hrefTargetBlank = true  # `true` opens external links in a new tab. See https://github.com/gohugoio/hugo/issues/2424
-	angledQuotes = false
+	angledQuotes = true
 	latexDashes = true
   extensions = ["backslashLineBreak"]
 
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.tableOfContents]
-    endLevel = 1
-    ordered = false
+    endLevel = 2
+    ordered = true
     startLevel = 1
   [markup.goldmark.renderer]
     unsafe = true

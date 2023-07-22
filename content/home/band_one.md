@@ -11,15 +11,19 @@ col2:
   row4: massQC
 ---
 
-TidyMass project is a comprehensive computational framework that can process the whole workflow of data processing and analysis for LC-MS-based untargeted metabolomics using [tidyverse](https://www.tidyverse.org/) principles.
+TidyMass is a comprehensive computational framework for data processing and analysis of LC-MS data using [tidyverse](https://www.tidyverse.org/) principles.
 
-Install tidymass with:
+Install tidymass:
 
 ```{r, eval= FALSE}
-if(!require(remotes)){
-install.packages("remotes")
-}
 remotes::install_gitlab("tidymass/tidymass")
+```
+
+or
+
+```{r, eval= FALSE}
+source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
+install_tidymass(from = "tidymass.org")
 ```
 
 More information can be found [here](https://www.tidymass.org/installation/).

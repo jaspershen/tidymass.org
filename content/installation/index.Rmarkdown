@@ -1,12 +1,14 @@
 ---
-title: "Install tidymass"
+title: ""
 ---
 
-# Install `tidymass` packages
+# Install `tidymass`
 
 > Please make sure your internet is connected and stable. 
 
 And if you have any problems during the installation, please feel free to send email to us (shenxt1990@outlook.edu) or contact me via [other social medias](https://www.tidymass.org/contact/).
+
+-------
 
 ## Update R version
 
@@ -19,21 +21,33 @@ version
 ```
 
 ![](figures/fig1.png)
+
+
 If your R version is < 4.1, please [download and install the latest version of R](https://cran.r-project.org/mirrors.html), and then restart your R.
 
-## Install `tidymass` from `GitLab`
+-------
 
-### Update `remotes` pacakge
+## From `local packages`
 
-You can use the `remotes` package to install `tidymass`. 
+Copy and paste the below code in your console.
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
+```
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
+install_tidymass(from = "tidymass.org")
+```
+
+-------
+
+## From `GitLab`
 
 Please update `remotes` first and then restart your r session.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 install.packages("remotes")
 ```
-
-### Install `tidymass`
 
 Install `tidymass` by:
 
@@ -47,9 +61,10 @@ remotes::install_gitlab("tidymass/tidymass", dependencies = TRUE)
 
 > If you have a completely fresh R enivorment, it needs to install all the dependent packages, so it will take around 30 mins to finish the installation of `tidymass`. In my Mac pro (macOS Monterey, 2.3 GHz 8-core intel core i9, 16GB 2667 MHz DDR4), it takes about 30 mins to finish the installation in a completely fresh R enivorment.
 
-## Install `tidymass` from `GitHub`
 
-### Install `tidymass`
+-------
+
+## Install `tidymass` from `GitHub`
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 remotes::install_github("tidymass/tidymass", dependencies = TRUE)
@@ -91,48 +106,28 @@ GITHUB_PAT=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
 And then restart R session and try again.
 
 
+-------
+
 ## Install `tidymass` from `Gitee`
 
 If you can't install packages from `GitHub` and `GitLab`, please try install packages from `Gitee`.
-
-### Install `tidymass`
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 remotes::install_git(url = "https://gitee.com/tidymass/tidymass", dependencies = TRUE)
 ```
 
-## Install `tidymass` by `local packages`
 
-### Source the install_tidymass function.
-
-Copy and paste the below code in your console.
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-source("https://www.tidymass.org/tidymass-packages/install_tidymass.txt")
-```
-
-### Install packages
-
-Copy and paste the below code in your console.
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-library(tidyverse)
-install_tidymass(from = "tidymass.org")
-```
+-------
 
 # Update `tidymass`
 
 You can use the `tidymass` to check the version of all packages and update them. 
-
-## Check version
 
 If you want to check if there are updates for `tidymass` and packages in it. Just check it like this.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
 tidymass::check_tidymass_version()
 ```
-
-## Update
 
 The `update_tidymass()` function can be used to update `tidymass` and packages in it.
 
@@ -143,17 +138,23 @@ tidymass::update_tidymass(from = "gitlab")
 > If the `from = "gitlab"` doesn't work, try set it as `from = "github"` or `from = "gitee"`.
 
 
+-----
+
 # Install docker version of `tidymass`
 
 Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. So it is useful for people who want to share the code, data, and even analysis environment with other people to repeat their analysis and results.
 
 We provide a docker version of `tidymass`, all the packages in `tidymass` and the dependent packages have been installed.
 
+-----
+
 ## Install docker
 
 Please refer to the [offical website](https://www.docker.com/get-started) to download and install docker. And then run docker.
 
 ![](figures/fig4.png)
+
+-----
 
 ## Pull the `tidymass` image
 
@@ -162,6 +163,8 @@ Open you terminal and then type code below:
 ```
 docker pull jaspershen/tidymass:latest
 ```
+
+-----
 
 ## Run `tidymass` docker image
 
@@ -177,6 +180,8 @@ The below command will link the RStudio home folder with the desktop of the loca
 docker run -e PASSWORD=tidymass -v ~/Desktop:/home/rstudio/ -p 8787:8787 jaspershen/tidymass:latest
 ```
 
+-----
+
 ## Open the Rstudio server
 
 Then open the browser and visit http://localhost:8787 to power on RStudio server. The user name is `rstudio` and the password is `tidymass`.
@@ -188,9 +193,13 @@ Then open the browser and visit http://localhost:8787 to power on RStudio server
 
 ![](figures/Untitled.gif)
 
-# Build your own docker image based on `tidymass`
+-----
+
+# Build docker image based on `tidymass`
 
 You can build your own docker image, which contains all your `code`, `data` and `analysis environment`, which is more efficient for reproducible analysis.
+
+-----
 
 ## Create `dockerfile`
 
@@ -219,6 +228,8 @@ RUN R -e 'install.packages("ggraph")'
 
 And you also need to copy your data to the image use the `COPY`.
 
+-----
+
 ## Build image
 
 In the `terminal`, use below code to build the image.
@@ -229,6 +240,8 @@ docker build -t image-name -f Dockerfile .
 
 Change the `image-name`.
 
+-----
+
 ## Use the `docker tag` command to give the `tidymass` image a new name
 
 We need to create a account on the docker hub (https://hub.docker.com/) and then use the next code to link the local image to our account.
@@ -236,6 +249,8 @@ We need to create a account on the docker hub (https://hub.docker.com/) and then
 ```
 docker tag image-name your-account/image-name:latest
 ```
+
+-----
 
 ## Push image to docker hub
 
@@ -247,6 +262,8 @@ Then other people can download your image which contains your code, data and ana
 
 How to pull docker image and run it can [refer this document](https://tidymass.github.io/tidymass/articles/docker.html).
 
+
+-----
 
 # Session information
 
